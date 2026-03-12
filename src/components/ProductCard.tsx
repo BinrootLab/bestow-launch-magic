@@ -52,8 +52,8 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
               onClick={() => setSelectedSize(size)}
               className={`px-3 py-1.5 font-body text-xs border transition-colors ${
                 selectedSize === size
-                  ? "border-foreground bg-foreground text-primary-foreground"
-                  : "border-border text-muted-foreground hover:border-foreground"
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border text-muted-foreground hover:border-primary"
               }`}
             >
               {size}
@@ -71,7 +71,7 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
               key={color.name}
               onClick={() => setSelectedColor(color.name)}
               className={`w-7 h-7 rounded-full border-2 transition-all ${
-                selectedColor === color.name ? "border-foreground scale-110" : "border-transparent"
+                selectedColor === color.name ? "border-primary scale-110" : "border-transparent"
               }`}
               style={{ backgroundColor: color.value }}
               title={color.name}
@@ -84,14 +84,14 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
       <div className="flex gap-3">
         <button
           onClick={handleAddToCart}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-foreground text-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-foreground hover:text-primary-foreground transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase hover:bg-primary hover:text-primary-foreground transition-colors"
         >
           <ShoppingBag size={14} />
           Add to Cart
         </button>
         <button
           onClick={handleBuyNow}
-          className="flex-1 px-4 py-3 bg-foreground text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
+          className="flex-1 px-4 py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-colors"
         >
           Buy Now
         </button>

@@ -30,7 +30,7 @@ const FeaturesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="features" className="py-24 md:py-40 bg-brand-warm" ref={ref}>
+    <section id="features" className="py-24 md:py-40 bg-card" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,8 +55,8 @@ const FeaturesSection = () => {
               transition={{ duration: 0.6, delay: 0.15 * index }}
               className="text-center group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 border border-border rounded-full flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300">
-                <feature.icon size={24} strokeWidth={1.5} className="text-foreground group-hover:text-accent transition-colors" />
+              <div className="w-16 h-16 mx-auto mb-6 border border-border rounded-full flex items-center justify-center group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300">
+                <feature.icon size={24} strokeWidth={1.5} className="text-foreground group-hover:text-primary transition-colors" />
               </div>
               <h3 className="font-display text-xl md:text-2xl text-foreground mb-3">
                 {feature.title}
