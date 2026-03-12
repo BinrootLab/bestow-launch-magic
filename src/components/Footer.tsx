@@ -69,11 +69,10 @@ const Footer = () => {
         </div>
 
         {/* Row 2: Cookie + Copyright */}
-        <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="border-t border-border mt-10 pt-6">
           <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
             Cookie Preferences
           </a>
-          <p className="font-body text-xs text-muted-foreground">© 2026 Tramontina India.</p>
         </div>
       </div>
     </footer>
