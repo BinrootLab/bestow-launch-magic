@@ -3,19 +3,9 @@ import { Facebook, Youtube, Instagram, Linkedin } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
-      {/* Back to top */}
-      <div className="text-center py-6 border-b border-border">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-body text-sm text-foreground hover:text-muted-foreground transition-colors"
-        >
-          Back to top
-        </button>
-      </div>
-
-      {/* Row 1: 4 columns */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+        {/* Row 1: 4 columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Address */}
           <div>
             <p className="font-body font-semibold text-sm text-foreground mb-4 tracking-[0.05em] uppercase">Tramontina</p>
@@ -79,18 +69,11 @@ const Footer = () => {
         </div>
 
         {/* Row 2: Cookie + Copyright */}
-        <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
             Cookie Preferences
           </a>
           <p className="font-body text-xs text-muted-foreground">© 2026 Tramontina India.</p>
-        </div>
-
-        {/* Bottom */}
-        <div className="border-t border-border pt-8 text-center">
-          <p className="font-body text-xs text-muted-foreground tracking-wide">
-            © 2026 Tramontina India.
-          </p>
         </div>
       </div>
     </footer>
