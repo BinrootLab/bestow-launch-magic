@@ -81,17 +81,17 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-3">
+      <div className="flex gap-2">
         <button
           onClick={handleAddToCart}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-primary text-primary font-body text-xs tracking-[0.15em] uppercase hover:bg-primary hover:text-primary-foreground transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 px-2 py-3 border border-primary text-primary font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary hover:text-primary-foreground transition-colors"
         >
-          <ShoppingBag size={14} />
+          <ShoppingBag size={12} />
           Add to Cart
         </button>
         <button
           onClick={handleBuyNow}
-          className="flex-1 px-4 py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-colors"
+          className="flex-1 px-2 py-3 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary/90 transition-colors"
         >
           Buy Now
         </button>
