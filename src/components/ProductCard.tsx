@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 
 interface ProductProps {
-  image: string;
+  images: string[];
   title: string;
   price: number;
   sizes: string[];
   colors: { name: string; value: string }[];
 }
 
-const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
+const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [selectedColor, setSelectedColor] = useState(colors[0].name);
+  const [currentImage, setCurrentImage] = useState(0);
 
   const handleAddToCart = () => {
     toast.success(`${title} (${selectedSize}, ${selectedColor}) added to cart`);
@@ -23,6 +24,16 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
     toast.success(`Proceeding to checkout for ${title}`);
   };
 
+  const prevImage = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  }, [images.length]);
+
+  const nextImage = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  }, [images.length]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,12 +42,44 @@ const ProductCard = ({ image, title, price, sizes, colors }: ProductProps) => {
       transition={{ duration: 0.6 }}
       className="group"
     >
-      <div className="aspect-square overflow-hidden bg-secondary mb-5">
+      {/* Image Carousel */}
+      <div className="aspect-square overflow-hidden bg-secondary mb-5 relative">
         <img
-          src={image}
-          alt={title}
+          src={images[currentImage]}
+          alt={`${title} - Image ${currentImage + 1}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
+
+        {images.length > 1 && (
+          <>
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 backdrop-blur-sm border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+            >
+              <ChevronLeft size={14} className="text-foreground" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 backdrop-blur-sm border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+            >
+              <ChevronRight size={14} className="text-foreground" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setCurrentImage(idx); }}
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${
+                    idx === currentImage ? "bg-foreground w-3" : "bg-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <h3 className="font-display text-xl text-foreground mb-1">{title}</h3>

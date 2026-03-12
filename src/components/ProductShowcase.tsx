@@ -5,10 +5,18 @@ import productNavy from "@/assets/product-navy-dutch-oven.jpg";
 import productRedSkillet from "@/assets/product-red-skillet.jpg";
 import productBlack from "@/assets/product-black-casserole.jpg";
 import productRed from "@/assets/product-red-dutch-oven.jpg";
+import heroSteam from "@/assets/hero-steam.jpg";
+import enamelCloseup from "@/assets/enamel-closeup.jpg";
+import lidCondensation from "@/assets/lid-condensation.jpg";
+import lifestyleCooking from "@/assets/lifestyle-cooking.jpg";
+import lifestyleTable from "@/assets/lifestyle-table.jpg";
+import galleryDetail from "@/assets/gallery-detail.jpg";
+import galleryKitchen from "@/assets/gallery-kitchen.jpg";
+import galleryPlated from "@/assets/gallery-plated.jpg";
 
 const products = [
   {
-    image: productRed,
+    images: [productRed, enamelCloseup, lifestyleCooking, lidCondensation],
     title: "Bestow Round Dutch Oven",
     price: 12999,
     sizes: ["20cm", "24cm", "28cm"],
@@ -19,7 +27,7 @@ const products = [
     ],
   },
   {
-    image: productNavy,
+    images: [productNavy, heroSteam, galleryDetail, lifestyleTable],
     title: "Bestow Oval Dutch Oven",
     price: 14999,
     sizes: ["25cm", "29cm", "33cm"],
@@ -30,7 +38,7 @@ const products = [
     ],
   },
   {
-    image: productRedSkillet,
+    images: [productRedSkillet, galleryKitchen, enamelCloseup, galleryPlated],
     title: "Bestow Enameled Skillet",
     price: 8999,
     sizes: ["23cm", "26cm", "30cm"],
@@ -40,7 +48,7 @@ const products = [
     ],
   },
   {
-    image: productBlack,
+    images: [productBlack, lidCondensation, lifestyleTable, heroSteam],
     title: "Bestow Casserole Dish",
     price: 10999,
     sizes: ["22cm", "26cm"],
