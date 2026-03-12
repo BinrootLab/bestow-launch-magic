@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-cookware.jpg";
+import heroImage from "@/assets/hero-steam.jpg";
 
 const HeroSection = () => {
   return (
@@ -11,7 +11,33 @@ const HeroSection = () => {
           alt="Bestow Enameled Cast Iron Collection"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-brand-navy/50" />
+        <div className="absolute inset-0 bg-brand-navy/60" />
+      </div>
+
+      {/* Animated steam particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 rounded-full bg-brand-cotton/20"
+            style={{
+              left: `${40 + i * 4}%`,
+              bottom: "30%",
+              height: `${40 + i * 15}px`,
+            }}
+            animate={{
+              y: [0, -120, -200],
+              opacity: [0, 0.6, 0],
+              scaleX: [1, 1.5, 2],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.8,
+              ease: "easeOut",
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
