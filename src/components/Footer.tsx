@@ -1,44 +1,111 @@
+import { Facebook, Youtube, Instagram, Linkedin } from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="border-t border-border py-16 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+    <footer className="border-t border-border bg-background">
+      {/* Back to top */}
+      <div className="text-center py-6 border-b border-border">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-body text-sm text-foreground hover:text-muted-foreground transition-colors"
+        >
+          Back to top
+        </button>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+          {/* Brand & Contact */}
           <div>
-            <p className="font-display text-lg text-foreground mb-4">Tramontina</p>
-            <p className="font-body text-xs text-muted-foreground leading-relaxed font-light">
-              Over 100 years of craftsmanship, innovation, and passion for creating exceptional cookware.
+            <p className="font-display text-lg text-foreground mb-6 tracking-wide">
+              <span className="font-body font-semibold text-base tracking-[0.1em]">TRAMONTINA</span>
             </p>
-          </div>
-          {[
-            { title: "Shop", links: ["Dutch Ovens", "Skillets", "Casseroles", "Sets"] },
-            { title: "Support", links: ["Care Guide", "Warranty", "FAQ", "Contact"] },
-            { title: "Company", links: ["About", "Sustainability", "Press", "Careers"] },
-          ].map((col) => (
-            <div key={col.title}>
-              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground mb-4">{col.title}</p>
-              <ul className="space-y-2">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div className="font-body text-xs text-muted-foreground leading-relaxed font-light space-y-1">
+              <p>ABR Emerald, 9th floor</p>
+              <p>Street 16, MIDC, Andheri E</p>
+              <p>Mumbai, Maharashtra</p>
+              <p>400093</p>
             </div>
-          ))}
-        </div>
-        <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[10px] text-muted-foreground tracking-wide">
-            © 2026 Tramontina. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            {["Privacy", "Terms", "Cookies"].map((item) => (
-              <a key={item} href="#" className="font-body text-[10px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">
-                {item}
-              </a>
-            ))}
+            <p className="font-body text-xs text-muted-foreground mt-4 font-light">
+              help.tindia@tramontina.com
+            </p>
+            <p className="font-body text-xs text-muted-foreground mt-2 font-light">
+              1800 210 1022
+            </p>
+            <div className="flex gap-4 mt-6">
+              {[
+                { icon: Facebook, label: "Facebook" },
+                { icon: Youtube, label: "YouTube" },
+                { icon: Instagram, label: "Instagram" },
+                { icon: Linkedin, label: "LinkedIn" },
+              ].map(({ icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="text-foreground hover:text-muted-foreground transition-colors"
+                >
+                  <Icon size={20} strokeWidth={1.5} />
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Products */}
+          <div>
+            <p className="font-body text-sm font-semibold text-foreground mb-4">Products</p>
+            <ul className="space-y-3">
+              {["Cookware", "Knives", "Kitchen Tools", "Product Catalog 2025"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* About Tramontina */}
+          <div>
+            <p className="font-body text-sm font-semibold text-foreground mb-4">About Tramontina</p>
+            <ul className="space-y-3">
+              {["About Us", "FAQ", "Warranty Page", "Whistleblower Channel"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service & Support */}
+          <div>
+            <p className="font-body text-sm font-semibold text-foreground mb-4">Service & Support</p>
+            <ul className="space-y-3">
+              {["Contact Us", "Privacy Policy", "Product Registration Policy", "Return Policy", "Shipping Policy"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Cookie Preferences */}
+        <div className="mb-8">
+          <a href="#" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors font-light">
+            Cookie Preferences
+          </a>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-border pt-8 text-center">
+          <p className="font-body text-xs text-muted-foreground tracking-wide">
+            © 2026 Tramontina India.
+          </p>
         </div>
       </div>
     </footer>
