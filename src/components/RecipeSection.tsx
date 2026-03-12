@@ -11,21 +11,21 @@ const recipes = [
     title: "Hyderabadi Dum Biryani",
     time: "90 min",
     difficulty: "Medium",
-    desc: "Layers of fragrant basmati rice and slow-cooked spiced meat, sealed and dum-cooked to perfection in a Bestow Dutch Oven.",
+    desc: "Layer basmati rice over spiced meat, seal the lid, and let the Bestow Dutch Oven do the work. The heavy lid traps steam for perfect dum — every grain separate, every bite flavourful.",
   },
   {
     image: recipeButterChicken,
     title: "Butter Chicken",
     time: "60 min",
     difficulty: "Easy",
-    desc: "Rich, creamy tomato-based curry with tender chicken pieces. The enamel distributes heat evenly for a velvety sauce.",
+    desc: "Sear chicken directly in the pot, add your makhani gravy, and simmer on low. The even heat means no stirring every 2 minutes — just a rich, creamy curry ready to serve at the table.",
   },
   {
     image: recipeBread,
     title: "No-Knead Artisan Bread",
     time: "45 min + overnight",
     difficulty: "Easy",
-    desc: "Crusty, golden sourdough baked inside a Dutch Oven. The lid creates steam for a perfect rise.",
+    desc: "Drop the dough in, put the lid on, and bake at 230°C. The sealed lid creates bakery-level steam for a crackling golden crust. No fancy equipment needed.",
   },
 ];
 
@@ -46,7 +46,7 @@ const RecipeSection = () => {
             Cook With Bestow
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Recipes made for cast iron
+            What will you make first?
           </h2>
         </motion.div>
 
@@ -80,6 +80,20 @@ const RecipeSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="#shop"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+          >
+            Get Your Bestow & Start Cooking
+          </a>
+        </motion.div>
       </div>
     </section>
   );

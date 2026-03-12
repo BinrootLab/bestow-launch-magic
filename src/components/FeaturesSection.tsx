@@ -5,28 +5,28 @@ import { ShieldCheck, Palette, Thermometer, Flame, Layers } from "lucide-react";
 const features = [
   {
     icon: ShieldCheck,
-    title: "Toxin-Free Porcelain Enamel",
-    description: "100% safe vitreous porcelain enamel interior — no PFOA, PTFE, or harmful chemicals. Cook with confidence.",
+    title: "Healthy & Nontoxic Enamel",
+    description: "Porcelain enamel interior free from PFOA, PTFE, and PFAS. No chemicals leaching into your food — just pure, safe cooking.",
   },
   {
     icon: Palette,
     title: "2× Color & Fade Resistant",
-    description: "Outer enamel is twice as resistant to color fading compared to standard coatings. Vibrant for years.",
+    description: "The outer enamel stays vibrant twice as long as standard coatings. Your Bestow looks brand new even after years of daily use.",
   },
   {
     icon: Thermometer,
-    title: "Heat Retention for Slow Cooking",
-    description: "Superior heat retention locks in nutrients and flavour — ideal for healthy, nutritional slow cooking.",
+    title: "Locks In Nutrition",
+    description: "Thick walls retain heat so well, you cook on lower flames. Vitamins and minerals stay in your food, not lost to high heat.",
   },
   {
     icon: Flame,
     title: "Flame to Table",
-    description: "From stovetop to oven to table — Bestow is beautiful enough to serve directly. No transferring needed.",
+    description: "Cook a biryani on the stove, bake bread in the oven, then serve it straight at the table. One vessel, zero transfers.",
   },
   {
     icon: Layers,
-    title: "Thick Gauge Construction",
-    description: "Heavy-duty thick gauge cast iron ensures even heat distribution for healthier, slow-cooked meals.",
+    title: "Thick Gauge Cast Iron",
+    description: "Heavy-duty construction distributes heat evenly across the base and walls — no hot spots, no burning, no guesswork.",
   },
 ];
 

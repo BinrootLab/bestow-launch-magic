@@ -6,19 +6,19 @@ const testimonials = [
   {
     name: "Priya Sharma",
     location: "Mumbai",
-    text: "The heat retention is extraordinary. My slow-cooked dal has never tasted better. This is a generational investment.",
+    text: "I slow-cook dal in my Bestow every single day. The heat is so even, nothing sticks and the flavour is unreal. This is my forever pot.",
     rating: 5,
   },
   {
     name: "Arjun Mehta",
     location: "Bangalore",
-    text: "I was sceptical at the price point, but after using the Dutch Oven daily for 3 months, I'm convinced. Worth every rupee.",
+    text: "I bake sourdough in the Dutch Oven every weekend. The crust comes out golden and crackling — better than any bakery. Worth every rupee.",
     rating: 5,
   },
   {
     name: "Kavita Reddy",
     location: "Hyderabad",
-    text: "Beautiful enough to serve at the table, tough enough for everyday cooking. The crimson red is absolutely stunning.",
+    text: "Made dum biryani for 12 people in the 6.6L. Cooked perfectly, served it straight on the table. Everyone asked where I got it.",
     rating: 5,
   },
 ];
@@ -34,17 +34,20 @@ const SocialProof = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            What People Say
+            Trusted Worldwide
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Loved by home cooks across India
+            Loved by millions of happy families
           </h2>
+          <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-xl mx-auto">
+            Tramontina cookware is used in over 150 million homes across 120+ countries. Here's what Indian home cooks are saying about Bestow.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -68,6 +71,20 @@ const SocialProof = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="#shop"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+          >
+            Join the Bestow Family
+          </a>
+        </motion.div>
       </div>
     </section>
   );

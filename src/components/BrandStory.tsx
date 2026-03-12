@@ -36,17 +36,30 @@ const BrandStory = () => {
             Crafted for those who savour every moment
           </h2>
           <p className="font-body text-base text-muted-foreground leading-relaxed mb-6 font-light">
-            Bestow combines timeless design with exceptional heat retention, crafted to elevate everyday cooking. Each piece is a testament to over a century of Tramontina's expertise in creating cookware that performs beautifully.
+            Bestow is enameled cast iron cookware backed by Tramontina's 113-year legacy. It's built for the way Indian families actually cook — long simmering dals, slow dum biryanis, deep-fried puris, and overnight bread bakes.
           </p>
           <p className="font-body text-base text-muted-foreground leading-relaxed font-light">
-            From slow-simmered stews to perfectly seared proteins, the enameled cast iron construction ensures even heat distribution and unmatched durability — a companion for generations of meals.
+            The porcelain enamel is healthy, nontoxic, and PFAS-free. The thick gauge cast iron holds heat so well, you use less gas and keep more nutrition in your food. And it's beautiful enough to go straight from stove to table.
           </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5 }}
+            className="mt-8"
+          >
+            <a
+              href="#shop"
+              className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+            >
+              Explore the Collection
+            </a>
+          </motion.div>
           <div className="mt-10 pt-10 border-t border-border">
             <div className="grid grid-cols-3 gap-8">
               {[
-                { value: "100+", label: "Years of Craft" },
+                { value: "113", label: "Years of Craft" },
                 { value: "232°C", label: "Oven Safe" },
-                { value: "∞", label: "Meals to Make" },
+                { value: "150M+", label: "Happy Homes" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="font-display text-2xl md:text-3xl text-foreground">{stat.value}</p>

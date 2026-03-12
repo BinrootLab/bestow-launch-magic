@@ -4,9 +4,9 @@ import enamelCloseup from "@/assets/enamel-closeup.jpg";
 import lidCondensation from "@/assets/lid-condensation.jpg";
 
 const steps = [
-  { number: "01", title: "Molten Iron Casting", desc: "Each piece begins as molten iron, poured into precision moulds for exact shaping." },
-  { number: "02", title: "Hand-Applied Enamel", desc: "Multiple layers of vitreous porcelain enamel are applied and kiln-fired at 800°C." },
-  { number: "03", title: "Quality Inspection", desc: "Every piece undergoes rigorous testing for durability, heat distribution, and finish." },
+  { number: "01", title: "Molten Iron, Precision Moulds", desc: "Each pot starts as molten iron poured into sand moulds. This gives Bestow its signature weight and even heat distribution — no thin spots, no warping." },
+  { number: "02", title: "Triple-Layer Enamel Coating", desc: "Three layers of porcelain enamel are kiln-fired at 800°C. The result is a smooth, nontoxic, PFAS-free surface that won't chip, stain, or react with acidic foods." },
+  { number: "03", title: "Tested for a Lifetime", desc: "Every piece is individually inspected for heat uniformity, lid seal, and enamel integrity before it leaves the factory." },
 ];
 
 const CraftsmanshipStory = () => {
@@ -64,6 +64,20 @@ const CraftsmanshipStory = () => {
             ))}
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center"
+        >
+          <a
+            href="#shop"
+            className="inline-block px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-colors"
+          >
+            See the Collection
+          </a>
+        </motion.div>
       </div>
     </section>
   );
