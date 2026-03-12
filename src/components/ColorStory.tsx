@@ -27,6 +27,9 @@ const ColorStory = () => {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
             Colours inspired by nature
           </h2>
+          <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-lg mx-auto">
+            The outer enamel is 2× more fade-resistant than standard coatings. Pick a colour — it'll look this good for years.
+          </p>
         </motion.div>
 
         <motion.div
@@ -59,6 +62,20 @@ const ColorStory = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="#shop"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+          >
+            Pick Your Colour
+          </a>
+        </motion.div>
       </div>
     </section>
   );

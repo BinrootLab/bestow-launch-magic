@@ -62,9 +62,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-body text-base md:text-lg text-brand-sky mb-10 font-light max-w-xl mx-auto leading-relaxed"
+          className="font-body text-base md:text-lg text-brand-sky mb-4 font-light max-w-xl mx-auto leading-relaxed"
         >
-          The globally acclaimed enamel cast iron range arrives in India.
+          Healthy, nontoxic, PFAS-free enameled cast iron — trusted by 150 million+ homes worldwide. Now in India.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,10 +79,10 @@ const HeroSection = () => {
             Shop Bestow
           </a>
           <a
-            href="#collection"
+            href="#guide"
             className="px-10 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-colors min-w-[200px]"
           >
-            Discover the Collection
+            Find Your Size
           </a>
         </motion.div>
       </div>
