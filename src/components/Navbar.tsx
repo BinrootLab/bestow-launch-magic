@@ -13,29 +13,26 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
-        <a href="#" className="font-display text-xl tracking-widest uppercase text-foreground">
-          Tramontina
+        <a href="#" className="font-body text-sm font-semibold tracking-[0.15em] uppercase text-foreground">
+          <span className="text-primary">T</span> Tramontina
         </a>
 
         <div className="hidden md:flex items-center gap-10">
-          <a href="#story" className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-            Story
-          </a>
-          <a href="#features" className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-            Features
-          </a>
-          <a href="#collection" className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-            Collection
-          </a>
-          <a href="#shop" className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-            Shop
-          </a>
+          {["Story", "Features", "Collection", "Shop"].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors"
+            >
+              {item}
+            </a>
+          ))}
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="relative p-2 text-foreground hover:text-accent transition-colors">
+          <button className="relative p-2 text-foreground hover:text-primary transition-colors">
             <ShoppingBag size={20} />
-            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-accent text-accent-foreground text-[10px] font-body font-medium rounded-full flex items-center justify-center">
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-primary text-primary-foreground text-[10px] font-body font-medium rounded-full flex items-center justify-center">
               0
             </span>
           </button>
@@ -61,7 +58,7 @@ const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                  className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item}

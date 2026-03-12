@@ -57,6 +57,10 @@ export default {
           black: "hsl(var(--brand-black))",
           warm: "hsl(var(--brand-warm))",
           gold: "hsl(var(--brand-gold))",
+          blue: "hsl(var(--brand-blue))",
+          sky: "hsl(var(--brand-sky))",
+          cotton: "hsl(var(--brand-cotton))",
+          terracotta: "hsl(var(--brand-terracotta))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

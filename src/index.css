@@ -6,42 +6,47 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 0 0% 8%;
+    /* Tramontina Brand System */
+    --background: 60 45% 95%; /* Cotton #F9F9EF */
+    --foreground: 225 90% 18%; /* Cobalt #051B57 */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 225 90% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 225 90% 18%;
 
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 240 100% 36%; /* Tramontina Blue #0000B7 */
+    --primary-foreground: 60 45% 95%; /* Cotton */
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 218 78% 80%; /* Sky Blue #A5C4F3 */
+    --secondary-foreground: 225 90% 18%;
 
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 218 40% 92%;
+    --muted-foreground: 225 30% 45%;
 
-    --accent: 0 65% 35%;
+    --accent: 1 65% 38%; /* Burgundy #A32421 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 10%;
+    --border: 218 30% 85%;
+    --input: 218 30% 85%;
+    --ring: 240 100% 36%;
 
     --radius: 0.25rem;
 
-    /* Brand colors */
-    --brand-red: 0 65% 35%;
-    --brand-navy: 220 50% 25%;
+    /* Product accent colors */
+    --brand-red: 1 65% 38%;
+    --brand-navy: 225 90% 18%;
     --brand-black: 0 0% 12%;
-    --brand-warm: 30 20% 96%;
-    --brand-gold: 38 60% 55%;
+    --brand-warm: 60 45% 95%;
+    --brand-gold: 34 78% 51%;
+    --brand-blue: 240 100% 36%;
+    --brand-sky: 218 78% 80%;
+    --brand-cotton: 60 45% 95%;
+    --brand-terracotta: 16 68% 45%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
