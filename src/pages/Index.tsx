@@ -2,10 +2,19 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import BrandStory from "@/components/BrandStory";
 import FeaturesSection from "@/components/FeaturesSection";
-import LifestyleGallery from "@/components/LifestyleGallery";
+import CraftsmanshipStory from "@/components/CraftsmanshipStory";
+import LifestyleCooking from "@/components/LifestyleCooking";
+import SocialProof from "@/components/SocialProof";
+import CareSection from "@/components/CareSection";
+import ColorStory from "@/components/ColorStory";
+import ComparisonSection from "@/components/ComparisonSection";
+import AuthoritySection from "@/components/AuthoritySection";
 import ProductShowcase from "@/components/ProductShowcase";
+import BuyingGuide from "@/components/BuyingGuide";
+import RecipeSection from "@/components/RecipeSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
   return (
@@ -14,10 +23,19 @@ const Index = () => {
       <HeroSection />
       <BrandStory />
       <FeaturesSection />
-      <LifestyleGallery />
+      <CraftsmanshipStory />
+      <LifestyleCooking />
+      <ColorStory />
       <ProductShowcase />
+      <ComparisonSection />
+      <BuyingGuide />
+      <SocialProof />
+      <CareSection />
+      <AuthoritySection />
+      <RecipeSection />
       <FinalCTA />
       <Footer />
+      <StickyCTA />
     </div>
   );
 };
