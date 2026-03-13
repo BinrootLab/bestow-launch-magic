@@ -67,9 +67,9 @@ const HeroSection = () => {
           Healthy, nontoxic, PFAS-free enameled cast iron — trusted by 150 million+ homes worldwide. Now in India.
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200, damping: 15 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
