@@ -42,9 +42,9 @@ const BrandStory = () => {
             The porcelain enamel is healthy, nontoxic, and PFAS-free. The thick gauge cast iron holds heat so well, you use less gas and keep more nutrition in your food. And it's beautiful enough to go straight from stove to table.
           </p>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 200, damping: 15 }}
             className="mt-8"
           >
             <a
