@@ -31,7 +31,7 @@ const FinalCTA = () => {
             </a>
             <a
               href="#guide"
-              className="inline-block px-12 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-colors"
+              className="inline-block px-12 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-all duration-300 hover:scale-105"
             >
               Find Your Size
             </a>
