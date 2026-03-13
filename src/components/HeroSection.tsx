@@ -80,7 +80,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#guide"
-            className="px-10 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-colors min-w-[200px]"
+            className="px-10 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-all duration-300 hover:scale-105 min-w-[200px]"
           >
             Find Your Size
           </a>
