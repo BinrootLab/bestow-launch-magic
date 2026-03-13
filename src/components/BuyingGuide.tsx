@@ -55,7 +55,7 @@ const BuyingGuide = () => {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-4 gap-6">
           {sizes.map((size, i) => (
             <motion.div
               key={size.capacity}
