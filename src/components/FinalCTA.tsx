@@ -25,13 +25,13 @@ const FinalCTA = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#shop"
-              className="inline-block px-12 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-colors"
+              className="inline-block px-12 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Shop Bestow
             </a>
             <a
               href="#guide"
-              className="inline-block px-12 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-colors"
+              className="inline-block px-12 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-all duration-300 hover:scale-105"
             >
               Find Your Size
             </a>

@@ -1,16 +1,38 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import colorTrio from "@/assets/color-trio.jpg";
+import heroSteam from "@/assets/hero-steam.jpg";
+import enamelCloseup from "@/assets/enamel-closeup.jpg";
+import lifestyleCooking from "@/assets/lifestyle-cooking.jpg";
 
 const colors = [
-  { name: "Forest Green", hex: "#2D5A3D", inspiration: "Inspired by the dense forests of southern Brazil" },
-  { name: "Crimson Red", hex: "#7A1B1B", inspiration: "Inspired by the rich earth of the Serra Gaúcha" },
-  { name: "Deep Blue", hex: "#1B2D5A", inspiration: "Inspired by the Atlantic waters off Rio Grande do Sul" },
+  {
+    name: "Forest Green",
+    hex: "#2D5A3D",
+    inspiration: "Inspired by the dense forests of southern Brazil",
+    image: lifestyleCooking,
+  },
+  {
+    name: "Crimson Red",
+    hex: "#7A1B1B",
+    inspiration: "Inspired by the rich earth of the Serra Gaúcha",
+    image: heroSteam,
+  },
+  {
+    name: "Deep Blue",
+    hex: "#1B2D5A",
+    inspiration: "Inspired by the Atlantic waters off Rio Grande do Sul",
+    image: enamelCloseup,
+  },
 ];
 
 const ColorStory = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeColor, setActiveColor] = useState<number | null>(null);
+
+  const displayImage = activeColor !== null ? colors[activeColor].image : colorTrio;
+  const displayText = activeColor !== null ? colors[activeColor].inspiration : null;
 
   return (
     <section className="py-24 md:py-40 bg-card" ref={ref}>
@@ -36,9 +58,26 @@ const ColorStory = () => {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16"
+          className="mb-16 relative overflow-hidden"
         >
-          <img src={colorTrio} alt="Bestow colour collection" className="w-full h-[300px] md:h-[450px] object-cover" />
+          <img
+            src={displayImage}
+            alt="Bestow colour collection"
+            className="w-full h-[300px] md:h-[450px] object-cover transition-all duration-700"
+          />
+          {displayText && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-8"
+            >
+              <p className="font-display text-2xl md:text-3xl text-card font-light">
+                {colors[activeColor!].name}
+              </p>
+              <p className="font-body text-sm text-card/80 mt-1">{displayText}</p>
+            </motion.div>
+          )}
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -48,15 +87,17 @@ const ColorStory = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 * i }}
-              className="flex items-start gap-5"
+              className="flex items-start gap-5 cursor-pointer group"
+              onMouseEnter={() => setActiveColor(i)}
+              onMouseLeave={() => setActiveColor(null)}
             >
               <motion.div
                 whileHover={{ scale: 1.15 }}
-                className="w-20 h-20 rounded-full flex-shrink-0 border-4 border-background shadow-lg"
+                className="w-20 h-20 rounded-full flex-shrink-0 border-4 border-background shadow-lg transition-shadow duration-300 group-hover:shadow-xl"
                 style={{ backgroundColor: color.hex }}
               />
               <div>
-                <h3 className="font-display text-xl text-foreground mb-1">{color.name}</h3>
+                <h3 className="font-display text-xl text-foreground mb-1 group-hover:text-primary transition-colors">{color.name}</h3>
                 <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{color.inspiration}</p>
               </div>
             </motion.div>
@@ -71,7 +112,7 @@ const ColorStory = () => {
         >
           <a
             href="#shop"
-            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
             Pick Your Colour
           </a>

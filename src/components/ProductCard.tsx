@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
@@ -15,6 +15,7 @@ const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [selectedColor, setSelectedColor] = useState(colors[0].name);
   const [currentImage, setCurrentImage] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleAddToCart = () => {
     toast.success(`${title} (${selectedSize}, ${selectedColor}) added to cart`);
@@ -34,6 +35,24 @@ const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
     setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
 
+  const startAutoPlay = useCallback(() => {
+    if (images.length <= 1) return;
+    intervalRef.current = setInterval(() => {
+      setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 1200);
+  }, [images.length]);
+
+  const stopAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => stopAutoPlay();
+  }, [stopAutoPlay]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -43,16 +62,19 @@ const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
       className="group"
     >
       {/* Image Carousel */}
-      <div className="aspect-square overflow-hidden bg-secondary mb-5 relative">
+      <div
+        className="aspect-square overflow-hidden bg-secondary mb-5 relative"
+        onMouseEnter={startAutoPlay}
+        onMouseLeave={() => { stopAutoPlay(); setCurrentImage(0); }}
+      >
         <img
           src={images[currentImage]}
           alt={`${title} - Image ${currentImage + 1}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
         />
 
         {images.length > 1 && (
           <>
-            {/* Navigation Arrows */}
             <button
               onClick={prevImage}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-background/80 backdrop-blur-sm border border-border rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
@@ -66,7 +88,6 @@ const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
               <ChevronRight size={14} className="text-foreground" />
             </button>
 
-            {/* Dots */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
               {images.map((_, idx) => (
                 <button
@@ -127,14 +148,14 @@ const ProductCard = ({ images, title, price, sizes, colors }: ProductProps) => {
       <div className="flex gap-2">
         <button
           onClick={handleAddToCart}
-          className="flex-1 flex items-center justify-center gap-1.5 px-2 py-3 border border-primary text-primary font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary hover:text-primary-foreground transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 px-2 py-3 border border-primary text-primary font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
         >
           <ShoppingBag size={12} />
           Add to Cart
         </button>
         <button
           onClick={handleBuyNow}
-          className="flex-1 px-2 py-3 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary/90 transition-colors"
+          className="flex-1 px-2 py-3 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap hover:bg-primary/90 transition-all duration-300 hover:scale-105"
         >
           Buy Now
         </button>

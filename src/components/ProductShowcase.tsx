@@ -19,7 +19,7 @@ const products = [
     images: [productRed, enamelCloseup, lifestyleCooking, lidCondensation],
     title: "Bestow Round Dutch Oven",
     price: 12999,
-    sizes: ["20cm", "24cm", "28cm"],
+    sizes: ["3.3L", "5.2L", "6.6L"],
     colors: [
       { name: "Deep Red", value: "#7A1B1B" },
       { name: "Navy", value: "#1B2D5A" },
@@ -30,7 +30,7 @@ const products = [
     images: [productNavy, heroSteam, galleryDetail, lifestyleTable],
     title: "Bestow Oval Dutch Oven",
     price: 14999,
-    sizes: ["25cm", "29cm", "33cm"],
+    sizes: ["3.3L", "5.2L", "6.6L"],
     colors: [
       { name: "Navy", value: "#1B2D5A" },
       { name: "Deep Red", value: "#7A1B1B" },
@@ -51,7 +51,7 @@ const products = [
     images: [productBlack, lidCondensation, lifestyleTable, heroSteam],
     title: "Bestow Casserole Dish",
     price: 10999,
-    sizes: ["22cm", "26cm"],
+    sizes: ["3.3L", "5.2L"],
     colors: [
       { name: "Matte Black", value: "#2A2A2A" },
       { name: "Navy", value: "#1B2D5A" },

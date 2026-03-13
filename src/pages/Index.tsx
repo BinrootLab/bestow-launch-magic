@@ -26,9 +26,9 @@ const Index = () => {
       <CraftsmanshipStory />
       <LifestyleCooking />
       <ColorStory />
-      <ProductShowcase />
       <ComparisonSection />
       <BuyingGuide />
+      <ProductShowcase />
       <SocialProof />
       <CareSection />
       <AuthoritySection />
