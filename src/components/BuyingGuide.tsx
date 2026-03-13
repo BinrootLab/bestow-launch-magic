@@ -1,14 +1,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Home, PartyPopper } from "lucide-react";
+import { Users, Home, PartyPopper, Heart } from "lucide-react";
 
 const sizes = [
   {
-    icon: Users,
+    icon: Heart,
     capacity: "3.3L",
     label: "For Couples",
     desc: "Perfect for intimate dinners for two. Ideal for soups, sauces, and small batches.",
     price: "₹8,999",
+  },
+  {
+    icon: Users,
+    capacity: "3.8L",
+    label: "For Small Families",
+    desc: "Great for a family of three. Everyday curries, rice dishes, and one-pot meals.",
+    price: "₹10,499",
   },
   {
     icon: Home,
@@ -32,8 +39,8 @@ const BuyingGuide = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-40 bg-card" ref={ref}>
-      <div className="max-w-5xl mx-auto px-6 lg:px-12">
+    <section id="guide" className="py-24 md:py-40 bg-card" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -48,15 +55,15 @@ const BuyingGuide = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {sizes.map((size, i) => (
             <motion.div
               key={size.capacity}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
+              transition={{ duration: 0.6, delay: 0.12 * i }}
               whileHover={{ y: -8 }}
-              className={`relative p-8 border text-center transition-shadow duration-300 hover:shadow-xl ${
+              className={`relative p-7 border text-center transition-shadow duration-300 hover:shadow-xl ${
                 size.popular ? "border-primary bg-background" : "border-border bg-background"
               }`}
             >
@@ -65,14 +72,14 @@ const BuyingGuide = () => {
                   Most Popular
                 </div>
               )}
-              <size.icon size={32} strokeWidth={1.5} className="mx-auto mb-4 text-primary" />
-              <p className="font-display text-4xl text-foreground mb-1">{size.capacity}</p>
-              <p className="font-body text-sm font-medium text-foreground mb-3">{size.label}</p>
-              <p className="font-body text-sm text-muted-foreground font-light leading-relaxed mb-6">{size.desc}</p>
-              <p className="font-display text-2xl text-foreground mb-4">{size.price}</p>
+              <size.icon size={28} strokeWidth={1.5} className="mx-auto mb-3 text-primary" />
+              <p className="font-display text-3xl text-foreground mb-1">{size.capacity}</p>
+              <p className="font-body text-sm font-medium text-foreground mb-2">{size.label}</p>
+              <p className="font-body text-sm text-muted-foreground font-light leading-relaxed mb-5">{size.desc}</p>
+              <p className="font-display text-xl text-foreground mb-4">{size.price}</p>
               <a
                 href="#shop"
-                className="inline-block w-full py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-colors"
+                className="inline-block w-full py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105"
               >
                 Shop Now
               </a>
