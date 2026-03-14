@@ -1,27 +1,49 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Droplets, HandMetal, ThermometerSun, SprayCan } from "lucide-react";
+import { Flame, Utensils, HandMetal, Thermometer, Sparkles, SprayCan, Droplets } from "lucide-react";
 
-const careTips = [
+const careSteps = [
   {
-    icon: ThermometerSun,
-    title: "Heat Gradually",
-    desc: "Always start on low-medium heat. Cast iron retains heat beautifully — no need to blast it.",
+    icon: Flame,
+    number: "01",
+    title: "Gentle Heat, Perfect Results",
+    desc: "Our heavy-gauge cast iron is engineered for superior thermal density. To preserve the triple-layer enamel and prevent scorching, always cook on low to medium heat. High heat is rarely needed when your cookware holds energy this efficiently.",
+  },
+  {
+    icon: Utensils,
+    number: "02",
+    title: "Tools of the Craft",
+    desc: "To maintain the diamond-hard brilliance of your interior, always use silicone, wooden, or nylon utensils. Avoid metal tools to ensure your non-reactive surface remains flawless and scratch-free for decades.",
   },
   {
     icon: HandMetal,
-    title: "Hand Wash Only",
-    desc: "Gently wash with warm soapy water. Avoid dishwashers to preserve the enamel finish.",
+    number: "03",
+    title: "The Art of the Hand Wash",
+    desc: "We recommend hand washing with a soft sponge and mild soap. This preserves the vibrant Brazilian-inspired lustre and protects the hand-finished rim from the harsh environment of a dishwasher.",
+  },
+  {
+    icon: Thermometer,
+    number: "04",
+    title: "Cool Before Cleaning",
+    desc: "Always allow your vessel to cool naturally before introducing it to water. This simple step protects the molecular bond of the enamel for a lifetime of use.",
+  },
+];
+
+const proTips = [
+  {
+    icon: Sparkles,
+    title: "Stain Removal",
+    desc: "Soak with warm water and baking soda to restore original brilliance.",
+  },
+  {
+    icon: SprayCan,
+    title: "No Aerosols",
+    desc: "Avoid non-stick sprays. A small amount of oil or butter is all you need.",
   },
   {
     icon: Droplets,
     title: "Dry Thoroughly",
-    desc: "Towel dry after washing. Store with lid slightly ajar to prevent moisture buildup.",
-  },
-  {
-    icon: SprayCan,
-    title: "Use Wooden or Silicone Utensils",
-    desc: "Protect the enamel interior by avoiding metal utensils. Wood and silicone are ideal.",
+    desc: "Always dry your pot completely before storing.",
   },
 ];
 
@@ -39,33 +61,58 @@ const CareSection = () => {
           className="text-center mb-16"
         >
           <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            Care & Longevity
+            The Bestow Care Guide
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Built for generations
+            Master the Care of Your Bestow.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-lg mx-auto">
-            With proper care, your Bestow cookware will last a lifetime. Here's how to keep it perfect.
+            With proper care, your Bestow will last a lifetime. Discover the simple rituals that keep your cookware in peak condition.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {careTips.map((tip, i) => (
+        {/* Main care steps */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {careSteps.map((step, i) => (
             <motion.div
-              key={tip.title}
+              key={step.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="text-center p-6 border border-border bg-card hover:shadow-lg transition-shadow duration-300"
+              className="p-6 border border-border bg-card hover:shadow-lg transition-shadow duration-300"
             >
-              <motion.div whileHover={{ rotate: 10 }} className="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-primary">
-                <tip.icon size={28} strokeWidth={1.5} />
-              </motion.div>
-              <h3 className="font-display text-lg text-foreground mb-2">{tip.title}</h3>
-              <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{tip.desc}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div whileHover={{ rotate: 10 }} className="w-10 h-10 flex items-center justify-center text-primary">
+                  <step.icon size={24} strokeWidth={1.5} />
+                </motion.div>
+                <span className="font-display text-sm text-muted-foreground">{step.number}</span>
+              </div>
+              <h3 className="font-display text-lg text-foreground mb-2">{step.title}</h3>
+              <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* Pro Tips */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="bg-card border border-border p-8 md:p-12"
+        >
+          <h3 className="font-display text-2xl text-foreground mb-8 text-center">3 Pro Tips</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {proTips.map((tip, i) => (
+              <div key={tip.title} className="flex items-start gap-4">
+                <tip.icon size={20} strokeWidth={1.5} className="text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-body text-sm font-medium text-foreground mb-1">{tip.title}</h4>
+                  <p className="font-body text-sm text-muted-foreground font-light">{tip.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

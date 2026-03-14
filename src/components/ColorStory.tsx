@@ -9,19 +9,22 @@ const colors = [
   {
     name: "Forest Green",
     hex: "#2D5A3D",
-    inspiration: "Inspired by the dense forests of southern Brazil",
+    subtitle: "The Deep Wild.",
+    inspiration: "Inspired by the ancient, sun-drenched canopies of southern Brazil. A grounding, natural anchor for the modern home.",
     image: lifestyleCooking,
   },
   {
     name: "Crimson Red",
     hex: "#7A1B1B",
-    inspiration: "Inspired by the rich earth of the Serra Gaúcha",
+    subtitle: "Rich Earth.",
+    inspiration: "Inspired by the iron-rich soils of the Serra Gaúcha. A bold, passionate tribute to the heart of our foundry.",
     image: heroSteam,
   },
   {
     name: "Deep Blue",
     hex: "#1B2D5A",
-    inspiration: "Inspired by the Atlantic waters off Rio Grande do Sul",
+    subtitle: "Atlantic Spirit.",
+    inspiration: "Inspired by the vast, rhythmic waters off Rio Grande do Sul. A calm, sophisticated classic for any table.",
     image: enamelCloseup,
   },
 ];
@@ -35,7 +38,7 @@ const ColorStory = () => {
   const displayText = activeColor !== null ? colors[activeColor].inspiration : null;
 
   return (
-    <section className="py-24 md:py-40 bg-card" ref={ref}>
+    <section id="palette" className="py-24 md:py-40 bg-card" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -47,10 +50,10 @@ const ColorStory = () => {
             The Palette
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Colours inspired by nature
+            The Soul of Brazil. Sculpted in Colour.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-lg mx-auto">
-            The outer enamel is 2× more fade-resistant than standard coatings. Pick a colour — it'll look this good for years.
+            Professional Grade. Non-toxic. Built to last a decade and beyond.
           </p>
         </motion.div>
 
@@ -73,7 +76,7 @@ const ColorStory = () => {
               className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-8"
             >
               <p className="font-display text-2xl md:text-3xl text-card font-light">
-                {colors[activeColor!].name}
+                {colors[activeColor!].name} — {colors[activeColor!].subtitle}
               </p>
               <p className="font-body text-sm text-card/80 mt-1">{displayText}</p>
             </motion.div>
@@ -97,7 +100,9 @@ const ColorStory = () => {
                 style={{ backgroundColor: color.hex }}
               />
               <div>
-                <h3 className="font-display text-xl text-foreground mb-1 group-hover:text-primary transition-colors">{color.name}</h3>
+                <h3 className="font-display text-xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                  {color.name} — {color.subtitle}
+                </h3>
                 <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{color.inspiration}</p>
               </div>
             </motion.div>
@@ -114,7 +119,7 @@ const ColorStory = () => {
             href="#shop"
             className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            Pick Your Colour
+            Select Your Colour
           </a>
         </motion.div>
       </div>

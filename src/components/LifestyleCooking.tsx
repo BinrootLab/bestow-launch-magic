@@ -20,9 +20,15 @@ const LifestyleCooking = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
             Life with Bestow
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            From flame to table, with love
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
+            Bestow the Joy of Real Cooking.
           </h2>
+          <p className="font-display text-lg md:text-xl text-muted-foreground font-light italic max-w-2xl mx-auto">
+            Slow curries. Sunday biryanis. Shared family meals.
+          </p>
+          <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-xl mx-auto leading-relaxed">
+            With the strength of cast iron and the purity of toxin-free enamel, Bestow turns everyday cooking into something lasting.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
