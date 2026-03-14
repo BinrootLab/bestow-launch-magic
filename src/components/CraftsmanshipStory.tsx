@@ -3,12 +3,6 @@ import { useRef } from "react";
 import enamelCloseup from "@/assets/enamel-closeup.jpg";
 import lidCondensation from "@/assets/lid-condensation.jpg";
 
-const steps = [
-  { number: "01", title: "Molten Iron, Precision Moulds", desc: "Each pot starts as molten iron poured into sand moulds. This gives Bestow its signature weight and even heat distribution — no thin spots, no warping." },
-  { number: "02", title: "Triple-Layer Enamel Coating", desc: "Three layers of porcelain enamel are kiln-fired at 800°C. The result is a smooth, nontoxic, PFAS-free surface that won't chip, stain, or react with acidic foods." },
-  { number: "03", title: "Tested for a Lifetime", desc: "Every piece is individually inspected for heat uniformity, lid seal, and enamel integrity before it leaves the factory." },
-];
-
 const CraftsmanshipStory = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -23,11 +17,14 @@ const CraftsmanshipStory = () => {
           className="text-center mb-20"
         >
           <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-4">
-            The Process
+            The Legacy
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-brand-cotton">
-            Craftsmanship in every detail
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-brand-cotton mb-4">
+            The Cast Iron Legacy.
           </h2>
+          <p className="font-display text-xl md:text-2xl text-brand-sky font-light italic">
+            Timeless Cookware. Enduring Performance.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
@@ -45,23 +42,17 @@ const CraftsmanshipStory = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-10"
+            className="space-y-6"
           >
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
-                className="flex gap-6"
-              >
-                <span className="font-display text-3xl text-brand-sky/40">{step.number}</span>
-                <div>
-                  <h3 className="font-display text-xl text-brand-cotton mb-2">{step.title}</h3>
-                  <p className="font-body text-sm text-brand-sky font-light leading-relaxed">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            <p className="font-body text-base text-brand-sky font-light leading-relaxed">
+              Cast iron has been valued for centuries for its strength, versatility and ability to hold heat.
+            </p>
+            <p className="font-body text-base text-brand-sky font-light leading-relaxed">
+              In Indian cooking, where flavour builds slowly and meals are meant to be shared, Bestow cast iron finds its perfect expression.
+            </p>
+            <p className="font-body text-base text-brand-sky font-light leading-relaxed">
+              With Bestow, that timeless material meets vibrant design and toxin-free enamel made for modern kitchens.
+            </p>
           </motion.div>
         </div>
 
@@ -75,8 +66,11 @@ const CraftsmanshipStory = () => {
             href="#shop"
             className="inline-block px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            See the Collection
+            Bestow Your Table
           </a>
+          <p className="font-body text-xs text-brand-sky/60 mt-4 italic">
+            For everyday use and high-performance pre-seasoned cast iron, visit our Titanex Cast Iron range.
+          </p>
         </motion.div>
       </div>
     </section>

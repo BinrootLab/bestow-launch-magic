@@ -1,32 +1,32 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ShieldCheck, Palette, Thermometer, Flame, Layers } from "lucide-react";
+import { ShieldCheck, Sparkles, UtensilsCrossed, Flame, Gem } from "lucide-react";
 
 const features = [
   {
     icon: ShieldCheck,
-    title: "Healthy & Nontoxic Enamel",
-    description: "Porcelain enamel interior free from PFOA, PTFE, and PFAS. No chemicals leaching into your food — just pure, safe cooking.",
+    title: "Pure Cooking",
+    description: "Porcelain enamel surface that is PFAS, PFOA and PTFE free.",
   },
   {
-    icon: Palette,
-    title: "2× Color & Fade Resistant",
-    description: "The outer enamel stays vibrant twice as long as standard coatings. Your Bestow looks brand new even after years of daily use.",
+    icon: Sparkles,
+    title: "Vibrant Finish",
+    description: "Brilliant colour engineered to stay beautiful for years.",
   },
   {
-    icon: Thermometer,
-    title: "Locks In Nutrition",
-    description: "Thick walls retain heat so well, you cook on lower flames. Vitamins and minerals stay in your food, not lost to high heat.",
+    icon: UtensilsCrossed,
+    title: "From Stove to Table",
+    description: "Cook and serve in one timeless vessel.",
   },
   {
     icon: Flame,
-    title: "Flame to Table",
-    description: "Cook a biryani on the stove, bake bread in the oven, then serve it straight at the table. One vessel, zero transfers.",
+    title: "Chef-Grade Craftsmanship",
+    description: "Thick cast iron ensures even heat and reliable performance.",
   },
   {
-    icon: Layers,
-    title: "Thick Gauge Cast Iron",
-    description: "Heavy-duty construction distributes heat evenly across the base and walls — no hot spots, no burning, no guesswork.",
+    icon: Gem,
+    title: "Aesthetic meets Performance",
+    description: "Complements our high-performance Pre-seasoned cast iron range — Titanex Series.",
   },
 ];
 
@@ -47,7 +47,7 @@ const FeaturesSection = () => {
             Why Bestow
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Built to perform. Made to last.
+            Professional Precision. Everyday Perfection.
           </h2>
         </motion.div>
 
@@ -75,6 +75,20 @@ const FeaturesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 200, damping: 15 }}
+          className="text-center mt-14"
+        >
+          <a
+            href="#shop"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Choose Your Bestow
+          </a>
+        </motion.div>
       </div>
     </section>
   );

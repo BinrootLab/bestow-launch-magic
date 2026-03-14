@@ -41,7 +41,7 @@ const products = [
     images: [productRedSkillet, galleryKitchen, enamelCloseup, galleryPlated],
     title: "Bestow Enameled Skillet",
     price: 8999,
-    sizes: ["23cm", "26cm", "30cm"],
+    sizes: ["25cm", "30cm"],
     colors: [
       { name: "Deep Red", value: "#7A1B1B" },
       { name: "Matte Black", value: "#2A2A2A" },
@@ -49,9 +49,9 @@ const products = [
   },
   {
     images: [productBlack, lidCondensation, lifestyleTable, heroSteam],
-    title: "Bestow Casserole Dish",
+    title: "Bestow Braiser",
     price: 10999,
-    sizes: ["3.3L", "5.2L"],
+    sizes: ["3.8L"],
     colors: [
       { name: "Matte Black", value: "#2A2A2A" },
       { name: "Navy", value: "#1B2D5A" },
@@ -77,7 +77,7 @@ const ProductShowcase = () => {
             The Collection
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Shop Bestow
+            Master the Heat. Shop Bestow.
           </h2>
         </motion.div>
 

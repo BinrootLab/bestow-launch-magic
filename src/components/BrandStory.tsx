@@ -1,7 +1,14 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Leaf, Truck, Disc, ShieldCheck } from "lucide-react";
 import lifestyleImage from "@/assets/lifestyle-cooking.jpg";
+
+const trustBadges = [
+  { icon: Leaf, label: "Toxin-Free Coating" },
+  { icon: Truck, label: "Free Shipping & Returns" },
+  { icon: Disc, label: "Induction & All Cooktop Ready" },
+  { icon: ShieldCheck, label: "Guaranteed for 10 Years" },
+];
 
 const BrandStory = () => {
   const ref = useRef(null);
@@ -33,13 +40,16 @@ const BrandStory = () => {
             The Bestow Story
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-8 leading-[1.1]">
-            Crafted for those who savour every moment
+            Bestow — Where Tradition Meets Craft.
           </h2>
           <p className="font-body text-base text-muted-foreground leading-relaxed mb-6 font-light">
-            Bestow is enameled cast iron cookware backed by Tramontina's 113-year legacy. It's built for the way Indian families actually cook — long simmering dals, slow dum biryanis, deep-fried puris, and overnight bread bakes.
+            Across the world and in Indian kitchens, cast iron has long been trusted for its ability to cook slowly, evenly and richly. Bestow elevates that tradition.
+          </p>
+          <p className="font-body text-base text-muted-foreground leading-relaxed mb-6 font-light">
+            Its dense cast iron core delivers steady heat that deepens flavours and enhances every dish. The porcelain enamel surface keeps cooking clean, pure and non-reactive.
           </p>
           <p className="font-body text-base text-muted-foreground leading-relaxed font-light">
-            The porcelain enamel is healthy, nontoxic, and PFAS-free. The thick gauge cast iron holds heat so well, you use less gas and keep more nutrition in your food. And it's beautiful enough to go straight from stove to table.
+            From the stovetop to the dining table, Bestow is made for meals that bring people together.
           </p>
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
@@ -51,19 +61,22 @@ const BrandStory = () => {
               href="#shop"
               className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
-              Explore the Collection
+              Discover Bestow
             </a>
           </motion.div>
-          <div className="mt-10 pt-10 border-t border-border">
-            <div className="grid grid-cols-3 gap-8">
-              {[
-                { value: "113", label: "Years of Craft" },
-                { value: "232°C", label: "Oven Safe" },
-                { value: "150M+", label: "Happy Homes" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-display text-2xl md:text-3xl text-foreground">{stat.value}</p>
-                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-2">{stat.label}</p>
+
+          {/* Micro trust line */}
+          <p className="font-body text-xs text-muted-foreground mt-8 italic">
+            115 Years of Brazilian Engineering. Professional-grade performance, backed by a lifetime of culinary support.
+          </p>
+
+          {/* Trust badges */}
+          <div className="mt-8 pt-8 border-t border-border">
+            <div className="grid grid-cols-2 gap-4">
+              {trustBadges.map((badge) => (
+                <div key={badge.label} className="flex items-center gap-3">
+                  <badge.icon size={18} strokeWidth={1.5} className="text-primary flex-shrink-0" />
+                  <span className="font-body text-xs text-muted-foreground">{badge.label}</span>
                 </div>
               ))}
             </div>

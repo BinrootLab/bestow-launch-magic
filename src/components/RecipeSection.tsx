@@ -8,24 +8,24 @@ import recipeBread from "@/assets/recipe-bread.jpg";
 const recipes = [
   {
     image: recipeBiryani,
-    title: "Hyderabadi Dum Biryani",
+    title: "The Signature Biryani",
     time: "90 min",
     difficulty: "Medium",
-    desc: "Layer basmati rice over spiced meat, seal the lid, and let the Bestow Dutch Oven do the work. The heavy lid traps steam for perfect dum — every grain separate, every bite flavourful.",
+    desc: "Perfectly even heat distribution for the ultimate bottom-crust (tahdig). Every grain separate, every bite flavourful.",
   },
   {
     image: recipeButterChicken,
-    title: "Butter Chicken",
-    time: "60 min",
+    title: "The 5-Hour Braise",
+    time: "5 hours",
     difficulty: "Easy",
-    desc: "Sear chicken directly in the pot, add your makhani gravy, and simmer on low. The even heat means no stirring every 2 minutes — just a rich, creamy curry ready to serve at the table.",
+    desc: "Experience the magic of nutrient-lock walls and fall-apart tenderness. Slow-cooked to perfection in your Bestow.",
   },
   {
     image: recipeBread,
-    title: "No-Knead Artisan Bread",
+    title: "The Artisan Loaf",
     time: "45 min + overnight",
     difficulty: "Easy",
-    desc: "Drop the dough in, put the lid on, and bake at 230°C. The sealed lid creates bakery-level steam for a crackling golden crust. No fancy equipment needed.",
+    desc: "Turn your oven into a professional bakery with 500°F heat resilience. A crackling golden crust, every time.",
   },
 ];
 
@@ -43,11 +43,14 @@ const RecipeSection = () => {
           className="text-center mb-16"
         >
           <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            Cook With Bestow
+            Culinary Inspiration
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            What will you make first?
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
+            Master the Art of the Slow Simmer.
           </h2>
+          <p className="font-body text-base text-muted-foreground font-light max-w-xl mx-auto">
+            High-performance cooking made simple. Explore our collection of signature recipes for the modern healthy kitchen.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -82,17 +85,20 @@ const RecipeSection = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 200, damping: 15 }}
           className="text-center mt-12"
         >
           <a
             href="#shop"
-            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors"
+            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            Get Your Bestow & Start Cooking
+            Explore the Recipes
           </a>
+          <p className="font-body text-xs text-muted-foreground mt-4 italic">
+            Professional Mastery. Crafted for Your Kitchen.
+          </p>
         </motion.div>
       </div>
     </section>
