@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Leaf, Award, Clock } from "lucide-react";
+import { ShieldCheck, Leaf, Truck, Clock } from "lucide-react";
 import heroImage from "@/assets/hero-steam.jpg";
-
-const trustBadges = [
-  { icon: ShieldCheck, label: "Healthy Non-Toxic" },
-  { icon: Leaf, label: "PFAS / PFOA / PTFE Free" },
-  { icon: Award, label: "Professional Grade" },
-  { icon: Clock, label: "Built for a Lifetime" },
-];
 
 const HeroSection = () => {
   return (
@@ -55,60 +48,62 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-6"
         >
-          Tramontina presents
+          Bestow by Tramontina — Trusted Worldwide Since 1911
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-brand-cotton mb-6 tracking-tight leading-[1.1]"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-brand-cotton mb-4 tracking-tight leading-[1.1]"
         >
-          Cast Iron, Beautifully Bestowed.
+          Cook Better. Live Cleaner.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-display text-lg md:text-xl text-brand-sky mb-2 font-light max-w-2xl mx-auto italic"
+          className="font-display text-lg md:text-xl text-brand-sky mb-8 font-light max-w-2xl mx-auto italic"
         >
-          115 years of Brazilian craftsmanship come together in Bestow, Tramontina's signature cast iron collection.
+          Cast Iron, Beautifully Bestowed for Modern Kitchens
         </motion.p>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-body text-base md:text-lg text-brand-sky mb-8 font-light max-w-xl mx-auto leading-relaxed"
+          className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10"
         >
-          Lead-free, PFOA-free, and induction-ready — the vibrant soul of the modern healthy kitchen.
-        </motion.p>
+          <span className="font-body text-xs text-brand-sky/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
+          <span className="hidden md:inline text-brand-sky/40">|</span>
+          <span className="font-body text-xs text-brand-sky/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
+          <span className="hidden md:inline text-brand-sky/40">|</span>
+          <span className="font-body text-xs text-brand-sky/90 tracking-wide">No Seasoning. No Compromise</span>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200, damping: 15 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+          className="mb-10"
         >
           <a
             href="#shop"
-            className="px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg min-w-[200px]"
+            className="px-12 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block"
           >
             Shop the Collection
           </a>
-          <a
-            href="#palette"
-            className="px-10 py-4 border border-brand-sky/40 text-brand-cotton font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/10 transition-all duration-300 hover:scale-105 min-w-[200px]"
-          >
-            Choose Your Colour
-          </a>
         </motion.div>
 
-        {/* Trust Badges */}
+        {/* Trust strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-wrap items-center justify-center gap-6 md:gap-10"
         >
-          {trustBadges.map((badge) => (
+          {[
+            { icon: Truck, label: "Sold in 120+ Countries" },
+            { icon: ShieldCheck, label: "Free Delivery" },
+            { icon: Clock, label: "10 Year Warranty" },
+          ].map((badge) => (
             <div key={badge.label} className="flex items-center gap-2">
               <badge.icon size={16} strokeWidth={1.5} className="text-brand-sky" />
               <span className="font-body text-[10px] tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>

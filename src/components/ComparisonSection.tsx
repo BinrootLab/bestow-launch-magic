@@ -1,34 +1,34 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Thermometer, Atom, PenTool } from "lucide-react";
+import { Thermometer, ShieldCheck, PenTool } from "lucide-react";
 
 const rows = [
-  { feature: "Foundry Heritage", other: "Mass-produced assembly", bestow: "115 Years of Brazilian Mastery" },
-  { feature: "Casting Quality", other: "Thin spots & uneven heat", bestow: "Heavy-Gauge Precision Casting" },
-  { feature: "Surface Safety", other: "May contain PTFE/PFAS", bestow: "Healthy, Non-Toxic & PFOA-Free" },
-  { feature: "Colour Resilience", other: "Fades with high-heat use", bestow: "2× Fade-Resistant Brilliance" },
-  { feature: "Moisture Control", other: "Standard flat lid", bestow: "Self-Basting Condensation Rings" },
-  { feature: "Longevity", other: "1–2 year typical lifespan", bestow: "10-Year Quality Guarantee" },
+  { feature: "Foundry Heritage", other: "Mass-produced", bestow: "115 Years of Brazilian Mastery" },
+  { feature: "Heat Performance", other: "Uneven heat", bestow: "Even, consistent heat" },
+  { feature: "Surface Safety", other: "May contain PFAS/PTFE", bestow: "100% Non-Toxic" },
+  { feature: "Colour Durability", other: "Fades over time", bestow: "Fade-resistant finish" },
+  { feature: "Lid Design", other: "Standard flat lid", bestow: "Self-basting lid design" },
+  { feature: "Longevity", other: "Short lifespan", bestow: "10-Year Guarantee" },
 ];
 
 const distinctions = [
   {
     icon: Thermometer,
     number: "1",
-    title: "Thermal Density",
-    desc: "Bestow's heavy-gauge iron core eliminates \"hot spots,\" holding a steady, chef-level temperature from base to rim.",
+    title: "Even, Consistent Heat",
+    desc: "Thick cast iron ensures steady heat with no hot spots.",
   },
   {
-    icon: Atom,
+    icon: ShieldCheck,
     number: "2",
-    title: "Molecular Fusion",
-    desc: "Our enamel is fused at 800°C to create a diamond-hard, non-reactive shield that won't chip or stain.",
+    title: "Non-Toxic Enamel",
+    desc: "A durable, non-reactive surface designed for clean cooking.",
   },
   {
     icon: PenTool,
     number: "3",
-    title: "Purposeful Design",
-    desc: "From the ergonomic stainless knob to the stove-to-social aesthetics, every detail is engineered for the modern home.",
+    title: "Thoughtful Design",
+    desc: "Built to cook, serve, and elevate every meal.",
   },
 ];
 
@@ -48,12 +48,9 @@ const ComparisonSection = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
             The Bestow Distinction
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-            The Bestow Distinction.
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
+            The Difference Is in the Details.
           </h2>
-          <p className="font-body text-base text-muted-foreground font-light max-w-xl mx-auto">
-            115 years of engineering defines the difference between a pot and a legacy.
-          </p>
         </motion.div>
 
         {/* Comparison Table */}
@@ -127,10 +124,10 @@ const ComparisonSection = () => {
             href="#shop"
             className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            Experience the Difference
+            Discover the Difference
           </a>
           <p className="font-body text-xs text-muted-foreground mt-4 italic">
-            Proven for Generations. Engineered for Yours.
+            Proven Over Generations. Made for Yours.
           </p>
         </motion.div>
       </div>

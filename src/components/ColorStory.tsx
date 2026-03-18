@@ -7,24 +7,24 @@ import lifestyleCooking from "@/assets/lifestyle-cooking.jpg";
 
 const colors = [
   {
-    name: "Forest Green",
+    name: "Cactus Green",
     hex: "#2D5A3D",
-    subtitle: "The Deep Wild.",
-    inspiration: "Inspired by the ancient, sun-drenched canopies of southern Brazil. A grounding, natural anchor for the modern home.",
+    subtitle: "Fresh, Grounded, Enduring",
+    inspiration: "Inspired by Brazil's lush landscapes, a natural, calming presence in any kitchen.",
     image: lifestyleCooking,
   },
   {
-    name: "Crimson Red",
+    name: "Gradated Red",
     hex: "#7A1B1B",
-    subtitle: "Rich Earth.",
-    inspiration: "Inspired by the iron-rich soils of the Serra Gaúcha. A bold, passionate tribute to the heart of our foundry.",
+    subtitle: "Rich, Bold, Expressive",
+    inspiration: "Inspired by iron-rich earth, a colour that brings warmth and intensity to the table.",
     image: heroSteam,
   },
   {
-    name: "Deep Blue",
+    name: "Medium Blue",
     hex: "#1B2D5A",
-    subtitle: "Atlantic Spirit.",
-    inspiration: "Inspired by the vast, rhythmic waters off Rio Grande do Sul. A calm, sophisticated classic for any table.",
+    subtitle: "Calm, Refined, Timeless",
+    inspiration: "Inspired by the Atlantic, understated, elegant, and effortlessly versatile.",
     image: enamelCloseup,
   },
 ];
@@ -35,7 +35,6 @@ const ColorStory = () => {
   const [activeColor, setActiveColor] = useState<number | null>(null);
 
   const displayImage = activeColor !== null ? colors[activeColor].image : colorTrio;
-  const displayText = activeColor !== null ? colors[activeColor].inspiration : null;
 
   return (
     <section id="palette" className="py-24 md:py-40 bg-card" ref={ref}>
@@ -50,10 +49,10 @@ const ColorStory = () => {
             The Palette
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            The Soul of Brazil. Sculpted in Colour.
+            The Soul of Brazil. In Every Colour.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-lg mx-auto">
-            Professional Grade. Non-toxic. Built to last a decade and beyond.
+            Crafted to perform. Built to last.
           </p>
         </motion.div>
 
@@ -68,7 +67,7 @@ const ColorStory = () => {
             alt="Bestow colour collection"
             className="w-full h-[300px] md:h-[450px] object-cover transition-all duration-700"
           />
-          {displayText && (
+          {activeColor !== null && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -76,9 +75,9 @@ const ColorStory = () => {
               className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-8"
             >
               <p className="font-display text-2xl md:text-3xl text-card font-light">
-                {colors[activeColor!].name} — {colors[activeColor!].subtitle}
+                {colors[activeColor].name} — {colors[activeColor].subtitle}
               </p>
-              <p className="font-body text-sm text-card/80 mt-1">{displayText}</p>
+              <p className="font-body text-sm text-card/80 mt-1">{colors[activeColor].inspiration}</p>
             </motion.div>
           )}
         </motion.div>
@@ -119,7 +118,7 @@ const ColorStory = () => {
             href="#shop"
             className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            Select Your Colour
+            Find Your Colour
           </a>
         </motion.div>
       </div>

@@ -6,44 +6,44 @@ const careSteps = [
   {
     icon: Flame,
     number: "01",
-    title: "Gentle Heat, Perfect Results",
-    desc: "Our heavy-gauge cast iron is engineered for superior thermal density. To preserve the triple-layer enamel and prevent scorching, always cook on low to medium heat. High heat is rarely needed when your cookware holds energy this efficiently.",
+    title: "Cook on Gentle Heat",
+    desc: "Bestow retains heat efficiently — low to medium heat is all you need.",
   },
   {
     icon: Utensils,
     number: "02",
-    title: "Tools of the Craft",
-    desc: "To maintain the diamond-hard brilliance of your interior, always use silicone, wooden, or nylon utensils. Avoid metal tools to ensure your non-reactive surface remains flawless and scratch-free for decades.",
+    title: "Use the Right Tools",
+    desc: "Stick to wooden, silicone, or nylon utensils to protect the enamel.",
   },
   {
     icon: HandMetal,
     number: "03",
-    title: "The Art of the Hand Wash",
-    desc: "We recommend hand washing with a soft sponge and mild soap. This preserves the vibrant Brazilian-inspired lustre and protects the hand-finished rim from the harsh environment of a dishwasher.",
+    title: "Wash with Care",
+    desc: "Hand wash with mild soap and a soft sponge to preserve its finish.",
   },
   {
     icon: Thermometer,
     number: "04",
-    title: "Cool Before Cleaning",
-    desc: "Always allow your vessel to cool naturally before introducing it to water. This simple step protects the molecular bond of the enamel for a lifetime of use.",
+    title: "Let It Cool",
+    desc: "Allow your cookware to cool before cleaning to maintain durability.",
   },
 ];
 
 const proTips = [
   {
     icon: Sparkles,
-    title: "Stain Removal",
-    desc: "Soak with warm water and baking soda to restore original brilliance.",
+    title: "For Stains",
+    desc: "Soak with warm water and baking soda.",
   },
   {
     icon: SprayCan,
-    title: "No Aerosols",
-    desc: "Avoid non-stick sprays. A small amount of oil or butter is all you need.",
+    title: "Avoid Sprays",
+    desc: "Use oil or butter instead.",
   },
   {
     icon: Droplets,
-    title: "Dry Thoroughly",
-    desc: "Always dry your pot completely before storing.",
+    title: "Dry Well",
+    desc: "Always dry before storing.",
   },
 ];
 
@@ -60,18 +60,14 @@ const CareSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            The Bestow Care Guide
-          </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Master the Care of Your Bestow.
+            Simple Care for Lasting Performance.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-lg mx-auto">
-            With proper care, your Bestow will last a lifetime. Discover the simple rituals that keep your cookware in peak condition.
+            Designed to last for years, with care that's simple and effortless.
           </p>
         </motion.div>
 
-        {/* Main care steps */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {careSteps.map((step, i) => (
             <motion.div
@@ -93,16 +89,15 @@ const CareSection = () => {
           ))}
         </div>
 
-        {/* Pro Tips */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="bg-card border border-border p-8 md:p-12"
         >
-          <h3 className="font-display text-2xl text-foreground mb-8 text-center">3 Pro Tips</h3>
+          <h3 className="font-display text-2xl text-foreground mb-8 text-center">Pro Tips</h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {proTips.map((tip, i) => (
+            {proTips.map((tip) => (
               <div key={tip.title} className="flex items-start gap-4">
                 <tip.icon size={20} strokeWidth={1.5} className="text-primary flex-shrink-0 mt-0.5" />
                 <div>
