@@ -1,31 +1,30 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Flame } from "lucide-react";
 import recipeBiryani from "@/assets/recipe-biryani.jpg";
 import recipeButterChicken from "@/assets/recipe-butterchicken.jpg";
 import recipeBread from "@/assets/recipe-bread.jpg";
+import galleryPlated from "@/assets/gallery-plated.jpg";
 
 const recipes = [
   {
-    image: recipeBiryani,
-    title: "The Signature Biryani",
-    time: "90 min",
-    difficulty: "Medium",
-    desc: "Perfectly even heat distribution for the ultimate bottom-crust (tahdig). Every grain separate, every bite flavourful.",
+    image: recipeButterChicken,
+    title: "The Slow Braise",
+    desc: "Fall-apart tenderness, rich flavours that deepen over time.",
   },
   {
-    image: recipeButterChicken,
-    title: "The 5-Hour Braise",
-    time: "5 hours",
-    difficulty: "Easy",
-    desc: "Experience the magic of nutrient-lock walls and fall-apart tenderness. Slow-cooked to perfection in your Bestow.",
+    image: recipeBiryani,
+    title: "The Signature Biryani",
+    desc: "Even heat for the perfect bottom crust and layered flavour.",
   },
   {
     image: recipeBread,
     title: "The Artisan Loaf",
-    time: "45 min + overnight",
-    difficulty: "Easy",
-    desc: "Turn your oven into a professional bakery with 500°F heat resilience. A crackling golden crust, every time.",
+    desc: "Crisp crust, soft centre — bakery-quality at home.",
+  },
+  {
+    image: galleryPlated,
+    title: "The Family Stew",
+    desc: "Clean, pure cooking for meals that bring everyone together.",
   },
 ];
 
@@ -46,14 +45,14 @@ const RecipeSection = () => {
             Culinary Inspiration
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-            Master the Art of the Slow Simmer.
+            Crafted for Slow Cooking.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light max-w-xl mx-auto">
-            High-performance cooking made simple. Explore our collection of signature recipes for the modern healthy kitchen.
+            From slow braises to signature biryanis — bring depth, flavour, and craft to every dish.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {recipes.map((recipe, i) => (
             <motion.div
               key={recipe.title}
@@ -69,14 +68,6 @@ const RecipeSection = () => {
                   alt={recipe.title}
                   className="w-full h-[280px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-              </div>
-              <div className="flex items-center gap-4 mb-3">
-                <span className="flex items-center gap-1.5 font-body text-xs text-muted-foreground">
-                  <Clock size={12} /> {recipe.time}
-                </span>
-                <span className="flex items-center gap-1.5 font-body text-xs text-muted-foreground">
-                  <Flame size={12} /> {recipe.difficulty}
-                </span>
               </div>
               <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-primary transition-colors">{recipe.title}</h3>
               <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{recipe.desc}</p>
@@ -96,9 +87,6 @@ const RecipeSection = () => {
           >
             Explore the Recipes
           </a>
-          <p className="font-body text-xs text-muted-foreground mt-4 italic">
-            Professional Mastery. Crafted for Your Kitchen.
-          </p>
         </motion.div>
       </div>
     </section>

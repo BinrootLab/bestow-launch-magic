@@ -7,26 +7,26 @@ const sizes = [
     icon: Heart,
     occasion: "Cooking for 1–2",
     recommendation: "25 cm Skillet / 3.3L Round",
-    capacity: "Compact & Precise",
+    capacity: "Compact & Precise Cooking",
   },
   {
     icon: UtensilsCrossed,
     occasion: "Daily Family Meal",
     recommendation: "30 cm Skillet / 5.2L Round",
-    capacity: "The All-Rounder",
+    capacity: "Versatile everyday use",
     popular: true,
   },
   {
     icon: Beef,
-    occasion: "Sunday Roasts",
+    occasion: "Hosting & Roasts",
     recommendation: "5.2L or 6.6L Oval",
-    capacity: "Large & Elegant",
+    capacity: "Large, shareable meals",
   },
   {
     icon: FlameKindling,
     occasion: "Braising & Searing",
     recommendation: "3.8L Braiser",
-    capacity: "Low-Wall Mastery",
+    capacity: "Controlled, flavour-rich cooking",
   },
 ];
 
@@ -47,14 +47,14 @@ const BuyingGuide = () => {
             Quick Guide
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
-            Begin Your Bestow Story.
+            Choose Your Bestow.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-4 max-w-xl mx-auto leading-relaxed">
-            From intimate dinners for two to grand family feasts — precision-engineered for the heart of every home.
+            From quiet dinners to shared family feasts — there's a Bestow for every table.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        <div className="grid grid-cols-4 gap-6 mt-16">
           {sizes.map((size, i) => (
             <motion.div
               key={size.occasion}
@@ -95,7 +95,7 @@ const BuyingGuide = () => {
             href="#shop"
             className="inline-block px-10 py-4 border border-primary text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
-            Find Your Bestow Fit
+            Find Your Bestow
           </a>
         </motion.div>
       </div>

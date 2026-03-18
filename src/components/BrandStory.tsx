@@ -1,13 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Leaf, Truck, Disc, ShieldCheck } from "lucide-react";
-import lifestyleImage from "@/assets/lifestyle-cooking.jpg";
+import { Calendar, Globe, Users, Factory } from "lucide-react";
 
-const trustBadges = [
-  { icon: Leaf, label: "Toxin-Free Coating" },
-  { icon: Truck, label: "Free Shipping & Returns" },
-  { icon: Disc, label: "Induction & All Cooktop Ready" },
-  { icon: ShieldCheck, label: "Guaranteed for 10 Years" },
+const stats = [
+  { icon: Calendar, value: "EST. 1911", label: "Built on craftsmanship and enduring quality" },
+  { icon: Globe, value: "120+ Countries", label: "Present in kitchens around the world" },
+  { icon: Users, value: "Family-Led", label: "Generations of expertise and care" },
+  { icon: Factory, value: "9 Factories", label: "End-to-end control for consistent quality" },
 ];
 
 const BrandStory = () => {
@@ -15,72 +14,60 @@ const BrandStory = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="story" className="py-24 md:py-40 px-6 lg:px-12" ref={ref}>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+    <section id="brand" className="py-24 md:py-40 bg-foreground text-primary-foreground" ref={ref}>
+      <div className="max-w-5xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="overflow-hidden"
         >
-          <img
-            src={lifestyleImage}
-            alt="Cooking with Bestow cast iron"
-            className="w-full h-[500px] md:h-[650px] object-cover"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col justify-center"
-        >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-6">
             The Bestow Story
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-8 leading-[1.1]">
-            Bestow — Where Tradition Meets Craft.
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-brand-cotton mb-4">
+            115 Years of Brazilian Mastery.
           </h2>
-          <p className="font-body text-base text-muted-foreground leading-relaxed mb-6 font-light">
-            Across the world and in Indian kitchens, cast iron has long been trusted for its ability to cook slowly, evenly and richly. Bestow elevates that tradition.
+          <p className="font-display text-lg md:text-xl text-brand-sky font-light italic mb-8">
+            From a 1911 blacksmith workshop to a global benchmark in cookware.
           </p>
-          <p className="font-body text-base text-muted-foreground leading-relaxed mb-6 font-light">
-            Its dense cast iron core delivers steady heat that deepens flavours and enhances every dish. The porcelain enamel surface keeps cooking clean, pure and non-reactive.
+          <p className="font-body text-base text-brand-sky font-light max-w-2xl mx-auto leading-relaxed mb-6">
+            What began as a single blacksmith's vision in southern Brazil has evolved into a global standard in cookware. For over 115 years, Tramontina has remained family-led, focused on craftsmanship, performance, and timeless design.
           </p>
-          <p className="font-body text-base text-muted-foreground leading-relaxed font-light">
-            From the stovetop to the dining table, Bestow is made for meals that bring people together.
+          <p className="font-body text-base text-brand-sky font-light max-w-2xl mx-auto leading-relaxed mb-16">
+            Today, with 9 state-of-the-art factories, every Bestow piece still reflects that original philosophy: make it right, make it beautiful, and make it last.
           </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.value}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className="flex flex-col items-center"
+              >
+                <stat.icon size={24} strokeWidth={1.5} className="text-brand-sky mb-3" />
+                <p className="font-display text-2xl md:text-3xl text-brand-cotton">{stat.value}</p>
+                <p className="font-body text-[10px] tracking-[0.15em] uppercase text-brand-sky mt-2 max-w-[180px]">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 200, damping: 15 }}
-            className="mt-8"
+            transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 200, damping: 15 }}
           >
             <a
               href="#shop"
-              className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-block px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
-              Discover Bestow
+              Explore Bestow
             </a>
+            <p className="font-body text-xs text-brand-sky/60 mt-4 italic">
+              115 years of craftsmanship, brought to your kitchen.
+            </p>
           </motion.div>
-
-          {/* Micro trust line */}
-          <p className="font-body text-xs text-muted-foreground mt-8 italic">
-            115 Years of Brazilian Engineering. Professional-grade performance, backed by a lifetime of culinary support.
-          </p>
-
-          {/* Trust badges */}
-          <div className="mt-8 pt-8 border-t border-border">
-            <div className="grid grid-cols-2 gap-4">
-              {trustBadges.map((badge) => (
-                <div key={badge.label} className="flex items-center gap-3">
-                  <badge.icon size={18} strokeWidth={1.5} className="text-primary flex-shrink-0" />
-                  <span className="font-body text-xs text-muted-foreground">{badge.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>
