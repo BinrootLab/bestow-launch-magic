@@ -86,11 +86,24 @@ const ProductShowcase = () => {
             Limited imports. Available in small batches.
           </p>
         </motion.div>
+      </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+      {/* Horizontal scrollable product strip */}
+      <div className="max-w-7xl mx-auto pl-6 lg:pl-12">
+        <div
+          className="flex gap-6 md:gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {products.map((product) => (
-            <ProductCard key={product.title} {...product} />
+            <div
+              key={product.title}
+              className="flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-[40vw] lg:w-[calc(25%-1.5rem)] snap-start"
+            >
+              <ProductCard {...product} />
+            </div>
           ))}
+          {/* Spacer for the partial peek on the right */}
+          <div className="flex-shrink-0 w-6 lg:w-12" />
         </div>
       </div>
     </section>

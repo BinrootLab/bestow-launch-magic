@@ -1,5 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChefHat, X, ChevronLeft, ChevronRight } from "lucide-react";
 import recipeBiryani from "@/assets/recipe-biryani.jpg";
 import recipeButterChicken from "@/assets/recipe-butterchicken.jpg";
 import recipeBread from "@/assets/recipe-bread.jpg";
@@ -10,86 +11,147 @@ const recipes = [
     image: recipeButterChicken,
     title: "The Slow Braise",
     desc: "Fall-apart tenderness, rich flavours that deepen over time.",
+    tip: "Use low heat and let the cast iron do the work. The heavy lid traps moisture for a self-basting effect.",
   },
   {
     image: recipeBiryani,
     title: "The Signature Biryani",
     desc: "Even heat for the perfect bottom crust and layered flavour.",
+    tip: "Layer rice and meat alternately, seal the lid with dough for the perfect dum. Bestow's heat retention makes it ideal.",
   },
   {
     image: recipeBread,
     title: "The Artisan Loaf",
     desc: "Crisp crust, soft centre — bakery-quality at home.",
+    tip: "Preheat the Dutch Oven for 30 minutes. The enclosed environment creates steam for a professional crust.",
   },
   {
     image: galleryPlated,
     title: "The Family Stew",
     desc: "Clean, pure cooking for meals that bring everyone together.",
+    tip: "Brown the meat first, deglaze with wine, then slow-cook. The non-reactive enamel preserves pure flavours.",
   },
 ];
 
 const RecipeSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentRecipe, setCurrentRecipe] = useState(0);
+
+  const goNext = () => setCurrentRecipe((p) => (p === recipes.length - 1 ? 0 : p + 1));
+  const goPrev = () => setCurrentRecipe((p) => (p === 0 ? recipes.length - 1 : p - 1));
 
   return (
-    <section className="py-24 md:py-40" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            Culinary Inspiration
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-            Crafted for Slow Cooking.
-          </h2>
-          <p className="font-body text-base text-muted-foreground font-light max-w-xl mx-auto">
-            From slow braises to signature biryanis — bring depth, flavour, and craft to every dish.
-          </p>
-        </motion.div>
+    <>
+      <motion.button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-56 right-6 z-40 flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase shadow-lg hover:shadow-xl transition-all duration-300"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.6 }}
+      >
+        <ChefHat size={16} />
+        Recipes
+      </motion.button>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {recipes.map((recipe, i) => (
+      <AnimatePresence>
+        {isOpen && (
+          <>
             <motion.div
-              key={recipe.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
-              whileHover={{ y: -4 }}
-              className="group cursor-pointer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-4 md:inset-x-auto md:inset-y-8 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-xl bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
             >
-              <div className="overflow-hidden mb-5">
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="w-full h-[280px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+              <div className="flex items-center justify-between p-6 border-b border-border">
+                <div>
+                  <h2 className="font-display text-2xl md:text-3xl text-foreground">Culinary Inspiration</h2>
+                  <p className="font-body text-xs text-muted-foreground mt-1">
+                    Recipe {currentRecipe + 1} of {recipes.length}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                >
+                  <X size={18} />
+                </button>
               </div>
-              <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-primary transition-colors">{recipe.title}</h3>
-              <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{recipe.desc}</p>
-            </motion.div>
-          ))}
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 200, damping: 15 }}
-          className="text-center mt-12"
-        >
-          <a
-            href="#shop"
-            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            Explore the Recipes
-          </a>
-        </motion.div>
-      </div>
-    </section>
+              <div className="flex-1 overflow-y-auto">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentRecipe}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <img
+                      src={recipes[currentRecipe].image}
+                      alt={recipes[currentRecipe].title}
+                      className="w-full h-[240px] md:h-[300px] object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+                        {recipes[currentRecipe].title}
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground font-light leading-relaxed mb-4">
+                        {recipes[currentRecipe].desc}
+                      </p>
+                      <div className="p-4 bg-background border border-border">
+                        <p className="font-body text-[10px] tracking-[0.2em] uppercase text-primary mb-2">Bestow Tip</p>
+                        <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">
+                          {recipes[currentRecipe].tip}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Navigation */}
+              <div className="flex items-center justify-between p-4 border-t border-border">
+                <button
+                  onClick={goPrev}
+                  className="flex items-center gap-2 px-4 py-2 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors text-sm font-body"
+                >
+                  <ChevronLeft size={16} />
+                  Previous
+                </button>
+                <div className="flex gap-1.5">
+                  {recipes.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentRecipe(i)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        i === currentRecipe ? "bg-primary w-4" : "bg-border"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <button
+                  onClick={goNext}
+                  className="flex items-center gap-2 px-4 py-2 border border-border text-foreground hover:bg-primary hover:text-primary-foreground transition-colors text-sm font-body"
+                >
+                  Next
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

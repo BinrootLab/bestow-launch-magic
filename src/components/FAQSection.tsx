@@ -1,5 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HelpCircle, X } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -22,11 +23,11 @@ const faqs = [
   },
   {
     q: "Why should I choose Bestow over cheaper alternatives?",
-    a: "You are investing in 115 years of Brazilian mastery. While standard pots may chip or fade, Bestow is engineered with dual-layer fade-resistant enamel and backed by a 10-year quality guarantee. It's the difference between a temporary tool and a lifelong heirloom.",
+    a: "You are investing in 115 years of Brazilian mastery. While standard pots may chip or fade, Bestow is engineered with dual-layer fade-resistant enamel and backed by a 10-year quality guarantee.",
   },
   {
     q: "Is Bestow safe for high-heat cooking?",
-    a: "While our cast iron core can withstand temperatures up to 260°C (500°F), we recommend cooking on low to medium heat. Because of its superior thermal density, the pot stores energy quickly and evenly, requiring less heat to achieve a perfect sear.",
+    a: "While our cast iron core can withstand temperatures up to 260°C (500°F), we recommend cooking on low to medium heat. Because of its superior thermal density, the pot stores energy quickly and evenly.",
   },
   {
     q: "Do I ever need to \"season\" the enamel?",
@@ -47,50 +48,76 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="py-24 md:py-40 bg-card" ref={ref}>
-      <div className="max-w-3xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-6"
-        >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            Expert Answers
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-            The Bestow FAQ.
-          </h2>
-          <p className="font-body text-base text-muted-foreground font-light">
-            Professional clarity for the modern home kitchen.
-          </p>
-        </motion.div>
+    <>
+      {/* Floating FAQ Widget Button */}
+      <motion.button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-24 right-6 z-40 flex items-center gap-2 px-5 py-3 bg-accent text-accent-foreground font-body text-xs tracking-[0.15em] uppercase shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2 }}
+      >
+        <HelpCircle size={16} />
+        FAQ
+      </motion.button>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12"
-        >
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                <AccordionTrigger className="font-display text-lg text-foreground text-left hover:text-primary py-6">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="font-body text-sm text-muted-foreground font-light leading-relaxed pb-6">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
-      </div>
-    </section>
+      {/* FAQ Dialog Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-4 md:inset-x-auto md:inset-y-8 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-border">
+                <div>
+                  <h2 className="font-display text-2xl md:text-3xl text-foreground">Frequently Asked Questions</h2>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Expert answers for your Bestow queries</p>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Scrollable content */}
+              <div className="flex-1 overflow-y-auto p-6">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                      <AccordionTrigger className="font-display text-base md:text-lg text-foreground text-left hover:text-primary py-5">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="font-body text-sm text-muted-foreground font-light leading-relaxed pb-5">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

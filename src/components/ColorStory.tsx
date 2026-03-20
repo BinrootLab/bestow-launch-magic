@@ -12,6 +12,7 @@ const colors = [
     subtitle: "Fresh, Grounded, Enduring",
     inspiration: "Inspired by Brazil's lush landscapes, a natural, calming presence in any kitchen.",
     image: lifestyleCooking,
+    video: "", // placeholder for future video URL
   },
   {
     name: "Gradated Red",
@@ -19,6 +20,7 @@ const colors = [
     subtitle: "Rich, Bold, Expressive",
     inspiration: "Inspired by iron-rich earth, a colour that brings warmth and intensity to the table.",
     image: heroSteam,
+    video: "",
   },
   {
     name: "Medium Blue",
@@ -26,6 +28,7 @@ const colors = [
     subtitle: "Calm, Refined, Timeless",
     inspiration: "Inspired by the Atlantic, understated, elegant, and effortlessly versatile.",
     image: enamelCloseup,
+    video: "",
   },
 ];
 
@@ -35,6 +38,7 @@ const ColorStory = () => {
   const [activeColor, setActiveColor] = useState<number | null>(null);
 
   const displayImage = activeColor !== null ? colors[activeColor].image : colorTrio;
+  const activeVideo = activeColor !== null ? colors[activeColor].video : "";
 
   return (
     <section id="palette" className="py-24 md:py-40 bg-card" ref={ref}>
@@ -62,22 +66,37 @@ const ColorStory = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16 relative overflow-hidden"
         >
-          <img
-            src={displayImage}
-            alt="Bestow colour collection"
-            className="w-full h-[300px] md:h-[450px] object-cover transition-all duration-700"
-          />
+          {/* Video layer — will activate when video URLs are added */}
+          {activeVideo ? (
+            <video
+              key={activeVideo}
+              src={activeVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-[300px] md:h-[450px] object-cover"
+            />
+          ) : (
+            <img
+              src={displayImage}
+              alt="Bestow colour collection"
+              className="w-full h-[300px] md:h-[450px] object-cover transition-all duration-700"
+            />
+          )}
           {activeColor !== null && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-8"
+              className="absolute bottom-0 left-0 right-0 p-8"
             >
-              <p className="font-display text-2xl md:text-3xl text-card font-light">
-                {colors[activeColor].name} — {colors[activeColor].subtitle}
-              </p>
-              <p className="font-body text-sm text-card/80 mt-1">{colors[activeColor].inspiration}</p>
+              <div className="inline-block bg-foreground/80 backdrop-blur-sm px-6 py-4">
+                <p className="font-display text-2xl md:text-3xl text-card font-light">
+                  {colors[activeColor].name} — {colors[activeColor].subtitle}
+                </p>
+                <p className="font-body text-sm text-card/80 mt-1">{colors[activeColor].inspiration}</p>
+              </div>
             </motion.div>
           )}
         </motion.div>
