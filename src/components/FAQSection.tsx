@@ -36,40 +36,42 @@ const FAQSection = ({ isOpen, onClose }: FAQSectionProps) => {
             className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50 flex items-center justify-center"
             onClick={onClose}
           />
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-2xl h-[calc(100%-4rem)] max-h-[700px] bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
-          >
-            <div className="flex items-center justify-between p-6 border-b border-border">
-              <div>
-                <h2 className="font-display text-2xl md:text-3xl text-foreground">Frequently Asked Questions</h2>
-                <p className="font-body text-xs text-muted-foreground mt-1">Expert answers for your Bestow queries</p>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="pointer-events-auto w-full max-w-2xl max-h-[700px] h-full bg-card flex flex-col overflow-hidden shadow-2xl"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-border">
+                <div>
+                  <h2 className="font-display text-2xl md:text-3xl text-foreground">Frequently Asked Questions</h2>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Expert answers for your Bestow queries</p>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                >
+                  <X size={18} />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-              >
-                <X size={18} />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto p-6">
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                    <AccordionTrigger className="font-display text-base md:text-lg text-foreground text-left hover:text-brand-burgundy py-5">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="font-body text-sm text-muted-foreground font-light leading-relaxed pb-5">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </motion.div>
+              <div className="flex-1 overflow-y-auto p-6">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                      <AccordionTrigger className="font-display text-base md:text-lg text-foreground text-left hover:text-brand-burgundy py-5">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="font-body text-sm text-muted-foreground font-light leading-relaxed pb-5">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
