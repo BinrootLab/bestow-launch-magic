@@ -28,7 +28,7 @@ const WhyBestow = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col justify-center"
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-burgundy mb-6">
             Why Bestow
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-8 leading-[1.1]">
