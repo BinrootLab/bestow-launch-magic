@@ -86,7 +86,7 @@ const HeroSection = () => {
         >
           <a
             href="#shop"
-            className="px-12 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block"
+            className="px-12 py-4 bg-brand-burgundy text-accent-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-burgundy/90 transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block"
           >
             Shop the Collection
           </a>

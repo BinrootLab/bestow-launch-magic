@@ -105,7 +105,7 @@ const ComparisonSection = () => {
                 whileHover={{ scale: 1.1 }}
                 className="w-14 h-14 mx-auto mb-4 rounded-full border border-border flex items-center justify-center"
               >
-                <item.icon size={22} strokeWidth={1.5} className="text-primary" />
+                <item.icon size={22} strokeWidth={1.5} className="text-brand-olive" />
               </motion.div>
               <span className="font-display text-sm text-muted-foreground">{item.number}.</span>
               <h4 className="font-display text-xl text-foreground mb-2">{item.title}</h4>

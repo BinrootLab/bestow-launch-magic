@@ -14,7 +14,7 @@ const FinalCTA = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-6">
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-olive mb-6">
             Bring Bestow Home
           </p>
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-brand-cotton mb-4 leading-[1.1]">

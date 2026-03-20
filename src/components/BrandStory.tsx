@@ -21,7 +21,7 @@ const BrandStory = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-6">
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-olive mb-6">
             The Bestow Story
           </p>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-brand-cotton mb-4">
