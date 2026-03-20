@@ -54,9 +54,12 @@ const BuyingGuide = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal scroll on mobile, grid on desktop */}
-        <div className="mt-16 -mx-6 px-6 lg:mx-0 lg:px-0">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+        {/* Horizontal scroll carousel */}
+        <div className="mt-16 -mx-6 lg:-mx-12">
+          <div
+            className="flex gap-5 overflow-x-auto px-6 lg:px-12 pb-4 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+          >
             {sizes.map((size, i) => (
               <motion.div
                 key={size.occasion}
@@ -64,12 +67,12 @@ const BuyingGuide = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.12 * i }}
                 whileHover={{ y: -8 }}
-                className={`relative p-6 md:p-7 border text-center transition-shadow duration-300 hover:shadow-xl flex-shrink-0 w-[70vw] sm:w-[50vw] snap-start lg:w-auto lg:flex-shrink ${
+                className={`relative p-6 md:p-7 border text-center transition-shadow duration-300 hover:shadow-xl flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-[40vw] lg:w-[calc(25%-1.25rem)] snap-start pt-10 ${
                   size.popular ? "border-primary bg-background" : "border-border bg-background"
                 }`}
               >
                 {size.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.2em] uppercase whitespace-nowrap">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.2em] uppercase whitespace-nowrap z-10">
                     Most Popular
                   </div>
                 )}
@@ -79,12 +82,14 @@ const BuyingGuide = () => {
                 <p className="font-body text-sm text-muted-foreground font-light leading-relaxed mb-5">{size.capacity}</p>
                 <a
                   href="#shop"
-                  className="inline-block w-full py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105"
+                  className="inline-block w-full py-3 bg-primary text-primary-foreground font-body text-xs tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-300 active:scale-95"
                 >
                   Shop Now
                 </a>
               </motion.div>
             ))}
+            {/* Right spacer for peek effect */}
+            <div className="flex-shrink-0 w-6 lg:w-12" />
           </div>
         </div>
 
