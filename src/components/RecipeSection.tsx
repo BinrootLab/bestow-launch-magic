@@ -39,7 +39,7 @@ const RecipeSection = ({ isOpen, onClose }: RecipeSectionProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-4 md:inset-x-auto md:inset-y-8 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-xl bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-xl h-[calc(100%-4rem)] max-h-[700px] bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
           >
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div>
