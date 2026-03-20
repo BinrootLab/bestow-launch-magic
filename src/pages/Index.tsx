@@ -23,6 +23,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <WhyBestow />
+      <ReviewWidget />
       <GlobalBenchmark />
       <CollectionIntro />
       <BrandStory />
@@ -31,7 +32,6 @@ const Index = () => {
       <ComparisonSection />
       <BuyingGuide />
       <ProductShowcase />
-      <ReviewWidget />
       <FAQSection />
       <CareSection />
       <RecipeSection />
