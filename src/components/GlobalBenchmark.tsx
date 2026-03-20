@@ -1,25 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Award, Trophy, Medal, Crown, Star, Gem, Shield, Globe, Flame, Heart, Sparkles, BadgeCheck, Ribbon, Target, Zap, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-
-const awards = [
-  { icon: Trophy, title: "Red Dot Design Award", year: "2023", category: "Product Design" },
-  { icon: Award, title: "iF Design Award", year: "2022", category: "Kitchen & Household" },
-  { icon: Medal, title: "Good Housekeeping Seal", year: "2023", category: "Cookware Excellence" },
-  { icon: Crown, title: "German Design Award", year: "2021", category: "Excellent Product Design" },
-  { icon: Star, title: "Best Cookware Brand", year: "2023", category: "Consumer Choice" },
-  { icon: Shield, title: "FDA Compliant", year: "Certified", category: "Safety Standard" },
-  { icon: Globe, title: "ISO 9001 Certified", year: "Since 2005", category: "Quality Management" },
-  { icon: Gem, title: "Brazil Export Award", year: "2022", category: "National Excellence" },
-  { icon: Flame, title: "Chef's Choice Award", year: "2023", category: "Professional Cookware" },
-  { icon: Heart, title: "Eco-Friendly Certified", year: "2023", category: "Sustainability" },
-  { icon: Sparkles, title: "Innovation Award", year: "2022", category: "Material Science" },
-  { icon: BadgeCheck, title: "Non-Toxic Verified", year: "Certified", category: "Health & Safety" },
-  { icon: Ribbon, title: "Best Cast Iron", year: "2023", category: "Cookware Category" },
-  { icon: Target, title: "Precision Engineering", year: "2021", category: "Manufacturing" },
-  { icon: Zap, title: "Thermal Performance", year: "2022", category: "Lab Tested" },
-  { icon: Trophy, title: "Heritage Brand Award", year: "2023", category: "115 Years Legacy" },
-];
+import { motion, useInView, useAnimation, useMotionValue } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
   {
@@ -81,186 +62,190 @@ const reviews = [
 const GlobalBenchmark = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [currentPage, setCurrentPage] = useState(0);
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(reviews.length / reviewsPerPage);
-  const currentReviews = reviews.slice(currentPage * reviewsPerPage, (currentPage + 1) * reviewsPerPage);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const scrollToIndex = useCallback((index: number) => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const cards = container.children;
+    if (cards[index]) {
+      const card = cards[index] as HTMLElement;
+      const containerWidth = container.offsetWidth;
+      const cardLeft = card.offsetLeft;
+      const scrollPos = cardLeft - 24; // 24px left padding
+      container.scrollTo({ left: scrollPos, behavior: "smooth" });
+      setActiveIndex(index);
+    }
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    if (!containerRef.current || isDragging.current) return;
+    const container = containerRef.current;
+    const cards = Array.from(container.children) as HTMLElement[];
+    const scrollPos = container.scrollLeft + 24;
+    
+    let closest = 0;
+    let minDist = Infinity;
+    cards.forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft - scrollPos);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    });
+    setActiveIndex(closest);
+  }, []);
+
+  const handlePrev = () => scrollToIndex(Math.max(0, activeIndex - 1));
+  const handleNext = () => scrollToIndex(Math.min(reviews.length - 1, activeIndex + 1));
+
+  // Touch/mouse drag
+  const onPointerDown = (e: React.PointerEvent) => {
+    isDragging.current = true;
+    startX.current = e.pageX - (containerRef.current?.offsetLeft || 0);
+    scrollLeft.current = containerRef.current?.scrollLeft || 0;
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current || !containerRef.current) return;
+    const x = e.pageX - (containerRef.current.offsetLeft || 0);
+    const walk = (x - startX.current) * 1.2;
+    containerRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const onPointerUp = () => {
+    isDragging.current = false;
+  };
 
   return (
-    <section className="py-24 md:py-32 bg-foreground text-primary-foreground overflow-hidden" ref={ref}>
-      {/* Header */}
+    <section className="py-20 md:py-28 bg-foreground text-primary-foreground overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-14"
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-olive mb-4">
-            Globally Recognised
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-brand-cotton mb-4">
-            Awards & Accolades
-          </h2>
-          <p className="font-body text-base text-brand-sky font-light max-w-xl mx-auto">
-            115 years of craft, recognised by the world's most respected institutions.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Row 1 — scrolls left */}
-      <div className="relative mb-4">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="flex gap-4 w-max"
-        >
-          {[...awards.slice(0, 8), ...awards.slice(0, 8)].map((award, i) => (
-            <div
-              key={`row1-${i}`}
-              className="flex-shrink-0 w-[260px] border border-brand-sky/15 bg-brand-sky/5 p-5 flex items-start gap-4 hover:bg-brand-sky/10 transition-colors duration-300"
-            >
-              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-brand-olive/15 rounded-sm">
-                <award.icon size={20} strokeWidth={1.5} className="text-brand-olive" />
-              </div>
-              <div className="min-w-0">
-                <p className="font-display text-sm text-brand-cotton leading-snug">{award.title}</p>
-                <p className="font-body text-[10px] tracking-[0.1em] uppercase text-brand-sky/70 mt-1">{award.year} · {award.category}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Row 2 — scrolls right */}
-      <div className="relative mb-20">
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-          className="flex gap-4 w-max"
-        >
-          {[...awards.slice(8, 16), ...awards.slice(8, 16)].map((award, i) => (
-            <div
-              key={`row2-${i}`}
-              className="flex-shrink-0 w-[260px] border border-brand-sky/15 bg-brand-sky/5 p-5 flex items-start gap-4 hover:bg-brand-sky/10 transition-colors duration-300"
-            >
-              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 bg-brand-olive/15 rounded-sm">
-                <award.icon size={20} strokeWidth={1.5} className="text-brand-olive" />
-              </div>
-              <div className="min-w-0">
-                <p className="font-display text-sm text-brand-cotton leading-snug">{award.title}</p>
-                <p className="font-body text-[10px] tracking-[0.1em] uppercase text-brand-sky/70 mt-1">{award.year} · {award.category}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Reviews Section */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center mb-12"
-        >
-          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-brand-cotton mb-3">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light text-brand-cotton mb-4 leading-[1.1]">
             Loved in Kitchens Around the World
-          </h3>
-          <div className="flex items-center justify-center gap-3 mb-2">
+          </h2>
+          <p className="font-body text-sm md:text-base text-brand-sky/80 font-light max-w-lg mx-auto leading-relaxed">
+            Built on 115 years of craftsmanship, designed for performance that lasts.
+          </p>
+
+          {/* Rating summary */}
+          <div className="flex items-center justify-center gap-3 mt-6">
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={16} className="fill-brand-gold text-brand-gold" />
+                <Star key={i} size={15} className="fill-brand-gold text-brand-gold" />
               ))}
             </div>
-            <span className="font-display text-2xl text-brand-cotton">4.9</span>
-            <span className="font-body text-xs text-brand-sky/70">based on 2,847 reviews</span>
+            <span className="font-display text-xl text-brand-cotton">4.9</span>
+            <span className="font-body text-[11px] text-brand-sky/60 tracking-wide">
+              from 2,847 reviews
+            </span>
           </div>
         </motion.div>
+      </div>
 
-        {/* Review Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
-          {currentReviews.map((review, i) => (
-            <motion.div
-              key={`${currentPage}-${review.name}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="bg-brand-sky/5 border border-brand-sky/15 p-7 relative"
+      {/* Review Carousel */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div
+          ref={containerRef}
+          onScroll={handleScroll}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerLeave={onPointerUp}
+          className="flex gap-5 overflow-x-auto px-6 lg:px-12 pb-4 snap-x snap-mandatory scrollbar-hide cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+        >
+          {reviews.map((review, i) => (
+            <div
+              key={review.name}
+              className="flex-shrink-0 w-[85vw] sm:w-[420px] md:w-[380px] lg:w-[400px] snap-start select-none"
             >
-              <Quote size={20} className="text-brand-sky/20 absolute top-5 right-5" />
-              <div className="flex gap-0.5 mb-3">
-                {[...Array(review.rating)].map((_, j) => (
-                  <Star key={j} size={13} className="fill-brand-gold text-brand-gold" />
-                ))}
-              </div>
-              <h4 className="font-display text-lg text-brand-cotton mb-2">{review.title}</h4>
-              <p className="font-body text-sm text-brand-sky/80 leading-relaxed font-light mb-5 italic">
-                "{review.text}"
-              </p>
-              <div className="border-t border-brand-sky/15 pt-4 flex items-center justify-between">
-                <div>
-                  <p className="font-body text-sm font-medium text-brand-cotton">{review.name}</p>
-                  <p className="font-body text-[11px] text-brand-sky/60">{review.location}</p>
+              <div className="bg-brand-sky/[0.04] border border-brand-sky/10 p-6 md:p-7 h-full relative group hover:bg-brand-sky/[0.08] transition-colors duration-300">
+                <Quote size={18} className="text-brand-sky/15 absolute top-5 right-5" />
+                
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-4">
+                  {[...Array(review.rating)].map((_, j) => (
+                    <Star key={j} size={12} className="fill-brand-gold text-brand-gold" />
+                  ))}
                 </div>
-                {review.verified && (
-                  <span className="font-body text-[10px] tracking-[0.1em] uppercase text-brand-olive bg-brand-olive/15 px-2 py-1">
-                    Verified
-                  </span>
-                )}
+
+                {/* Title & Text */}
+                <h4 className="font-display text-base md:text-lg text-brand-cotton mb-2 leading-snug">
+                  {review.title}
+                </h4>
+                <p className="font-body text-sm text-brand-sky/75 leading-relaxed font-light mb-5 italic">
+                  "{review.text}"
+                </p>
+
+                {/* Author */}
+                <div className="border-t border-brand-sky/10 pt-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-body text-sm font-medium text-brand-cotton">{review.name}</p>
+                    <p className="font-body text-[11px] text-brand-sky/50">{review.location}</p>
+                  </div>
+                  {review.verified && (
+                    <span className="font-body text-[9px] tracking-[0.15em] uppercase text-brand-olive bg-brand-olive/10 px-2 py-0.5">
+                      Verified
+                    </span>
+                  )}
+                </div>
+                <p className="font-body text-[10px] text-brand-sky/40 mt-2">{review.product}</p>
               </div>
-              <p className="font-body text-[10px] text-brand-sky/50 mt-2">{review.product}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mb-12">
+        {/* Navigation */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-8 flex items-center justify-between">
+          {/* Dots */}
+          <div className="flex gap-2">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToIndex(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === activeIndex
+                    ? "w-6 bg-brand-burgundy"
+                    : "w-1.5 bg-brand-sky/30 hover:bg-brand-sky/50"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex gap-2">
             <button
-              onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-              disabled={currentPage === 0}
-              className="p-2 border border-brand-sky/30 text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              onClick={handlePrev}
+              disabled={activeIndex === 0}
+              className="w-9 h-9 border border-brand-sky/20 flex items-center justify-center text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
             >
               <ChevronLeft size={16} />
             </button>
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i)}
-                className={`w-8 h-8 font-body text-xs transition-colors ${
-                  i === currentPage
-                    ? "bg-brand-burgundy text-brand-cotton"
-                    : "border border-brand-sky/30 text-brand-sky/70 hover:text-brand-cotton"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
             <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages - 1, p + 1))}
-              disabled={currentPage === totalPages - 1}
-              className="p-2 border border-brand-sky/30 text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              onClick={handleNext}
+              disabled={activeIndex === reviews.length - 1}
+              className="w-9 h-9 border border-brand-sky/20 flex items-center justify-center text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
             >
               <ChevronRight size={16} />
             </button>
           </div>
-        )}
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 200, damping: 15 }}
-          className="text-center"
-        >
-          <a
-            href="#shop"
-            className="inline-block px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            Shop Bestow
-          </a>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
