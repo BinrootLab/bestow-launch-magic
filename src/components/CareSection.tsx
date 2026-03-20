@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, X, Flame, Utensils, HandMetal, Thermometer, SprayCan, Droplets } from "lucide-react";
+import { X, Flame, Utensils, HandMetal, Thermometer, Sparkles, SprayCan, Droplets } from "lucide-react";
 
 const careSteps = [
   { icon: Flame, number: "01", title: "Cook on Gentle Heat", desc: "Bestow retains heat efficiently — low to medium heat is all you need." },
@@ -15,92 +14,78 @@ const proTips = [
   { icon: Droplets, title: "Dry Well", desc: "Always dry before storing." },
 ];
 
-const CareSection = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface CareSectionProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
+const CareSection = ({ isOpen, onClose }: CareSectionProps) => {
   return (
-    <>
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-40 right-6 z-40 flex items-center gap-2 px-5 py-3 bg-brand-olive text-card font-body text-xs tracking-[0.15em] uppercase shadow-lg hover:shadow-xl transition-all duration-300"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.3 }}
-      >
-        <Sparkles size={16} />
-        Care Tips
-      </motion.button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50"
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-4 md:inset-x-auto md:inset-y-8 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
-            >
-              <div className="flex items-center justify-between p-6 border-b border-border">
-                <div>
-                  <h2 className="font-display text-2xl md:text-3xl text-foreground">Care Tips</h2>
-                  <p className="font-body text-xs text-muted-foreground mt-1">Simple care for lasting performance</p>
-                </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-                >
-                  <X size={18} />
-                </button>
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-50"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-4 md:inset-x-auto md:inset-y-8 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl bg-card z-50 flex flex-col overflow-hidden shadow-2xl"
+          >
+            <div className="flex items-center justify-between p-6 border-b border-border">
+              <div>
+                <h2 className="font-display text-2xl md:text-3xl text-foreground">Care Tips</h2>
+                <p className="font-body text-xs text-muted-foreground mt-1">Simple care for lasting performance</p>
               </div>
-
-              <div className="flex-1 overflow-y-auto p-6">
-                <div className="space-y-5 mb-8">
-                  {careSteps.map((step) => (
-                    <div key={step.title} className="flex items-start gap-4 p-5 border border-border bg-background">
-                      <div className="w-10 h-10 flex items-center justify-center text-primary flex-shrink-0">
-                        <step.icon size={22} strokeWidth={1.5} />
+              <button
+                onClick={onClose}
+                className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="space-y-5 mb-8">
+                {careSteps.map((step) => (
+                  <div key={step.title} className="flex items-start gap-4 p-5 border border-border bg-background">
+                    <div className="w-10 h-10 flex items-center justify-center text-brand-olive flex-shrink-0">
+                      <step.icon size={22} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-body text-[10px] text-muted-foreground">{step.number}</span>
+                        <h3 className="font-display text-lg text-foreground">{step.title}</h3>
                       </div>
+                      <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-border pt-6">
+                <h3 className="font-display text-xl text-foreground mb-5 text-center">Pro Tips</h3>
+                <div className="space-y-4">
+                  {proTips.map((tip) => (
+                    <div key={tip.title} className="flex items-start gap-3">
+                      <tip.icon size={18} strokeWidth={1.5} className="text-brand-olive flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-body text-[10px] text-muted-foreground">{step.number}</span>
-                          <h3 className="font-display text-lg text-foreground">{step.title}</h3>
-                        </div>
-                        <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{step.desc}</p>
+                        <h4 className="font-body text-sm font-medium text-foreground">{tip.title}</h4>
+                        <p className="font-body text-sm text-muted-foreground font-light">{tip.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                <div className="border-t border-border pt-6">
-                  <h3 className="font-display text-xl text-foreground mb-5 text-center">Pro Tips</h3>
-                  <div className="space-y-4">
-                    {proTips.map((tip) => (
-                      <div key={tip.title} className="flex items-start gap-3">
-                        <tip.icon size={18} strokeWidth={1.5} className="text-primary flex-shrink-0 mt-0.5" />
-                        <div>
-                          <h4 className="font-body text-sm font-medium text-foreground">{tip.title}</h4>
-                          <p className="font-body text-sm text-muted-foreground font-light">{tip.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 

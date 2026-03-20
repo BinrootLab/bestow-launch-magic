@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyBestow from "@/components/WhyBestow";
-import ReviewWidget from "@/components/ReviewWidget";
 import GlobalBenchmark from "@/components/GlobalBenchmark";
 import CollectionIntro from "@/components/CollectionIntro";
 import BrandStory from "@/components/BrandStory";
@@ -13,9 +12,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
-import FAQSection from "@/components/FAQSection";
-import CareSection from "@/components/CareSection";
-import RecipeSection from "@/components/RecipeSection";
+import WidgetBar from "@/components/WidgetBar";
 
 const Index = () => {
   return (
@@ -23,7 +20,6 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <WhyBestow />
-      <ReviewWidget />
       <GlobalBenchmark />
       <CollectionIntro />
       <BrandStory />
@@ -33,12 +29,9 @@ const Index = () => {
       <BuyingGuide />
       <ProductShowcase />
       <FinalCTA />
+      <WidgetBar />
       <Footer />
       <StickyCTA />
-      {/* Floating widget buttons */}
-      <FAQSection />
-      <CareSection />
-      <RecipeSection />
     </div>
   );
 };
