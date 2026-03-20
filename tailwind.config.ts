@@ -61,6 +61,8 @@ export default {
           sky: "hsl(var(--brand-sky))",
           cotton: "hsl(var(--brand-cotton))",
           terracotta: "hsl(var(--brand-terracotta))",
+          burgundy: "hsl(var(--brand-burgundy))",
+          olive: "hsl(var(--brand-olive))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
