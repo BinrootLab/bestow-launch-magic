@@ -71,7 +71,7 @@ const BuyingGuide = () => {
                 }`}
               >
                 {size.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground font-body text-[10px] tracking-[0.2em] uppercase whitespace-nowrap z-10">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-accent-foreground font-body text-[10px] tracking-[0.2em] uppercase whitespace-nowrap z-10">
                     Most Popular
                   </div>
                 )}
