@@ -73,7 +73,7 @@ const ProductShowcase = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-olive mb-4">
             The Collection
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
