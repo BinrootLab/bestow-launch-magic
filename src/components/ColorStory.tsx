@@ -1,6 +1,36 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useCallback } from "react";
 import { Play } from "lucide-react";
+
+const VideoCard = ({ video, poster }: { video: string; poster?: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    videoRef.current?.play();
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={video}
+      poster={poster || undefined}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="w-full h-full object-cover cursor-pointer"
+    />
+  );
+};
 
 const colors = [
   {
@@ -67,15 +97,7 @@ const ColorStory = () => {
               {/* Video container — 9:16 aspect ratio */}
               <div className="relative aspect-[9/16] overflow-hidden bg-foreground/5 mb-5">
                 {color.video ? (
-                  <video
-                    src={color.video}
-                    poster={color.poster || undefined}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <VideoCard video={color.video} poster={color.poster} />
                 ) : (
                   /* Placeholder until videos are added */
                   <div
