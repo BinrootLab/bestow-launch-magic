@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Tramontina Brand System */
-    --background: 60 45% 95%; /* Cotton #F9F9EF */
+    --background: 55 30% 92%; /* Cotton 80% — warmer, more visible */
     --foreground: 225 90% 18%; /* Cobalt #051B57 */
 
     --card: 0 0% 100%;
