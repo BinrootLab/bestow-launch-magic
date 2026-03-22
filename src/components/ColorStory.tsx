@@ -1,6 +1,36 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useCallback } from "react";
 import { Play } from "lucide-react";
+
+const VideoCard = ({ video, poster }: { video: string; poster?: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    videoRef.current?.play();
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={video}
+      poster={poster || undefined}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="w-full h-full object-cover cursor-pointer"
+    />
+  );
+};
 
 const colors = [
   {
