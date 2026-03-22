@@ -14,7 +14,7 @@ const BrandStory = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="brand" className="py-24 md:py-40 bg-foreground text-primary-foreground" ref={ref}>
+    <section id="brand" className="py-24 md:py-40 bg-accent text-accent-foreground" ref={ref}>
       <div className="max-w-5xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

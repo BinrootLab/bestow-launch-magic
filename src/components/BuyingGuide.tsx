@@ -66,9 +66,8 @@ const BuyingGuide = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.12 * i }}
-                whileHover={{ y: -8 }}
-                className={`relative p-6 md:p-7 border text-center transition-shadow duration-300 hover:shadow-xl flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-[40vw] lg:w-[calc(25%-1.25rem)] snap-start pt-10 ${
-                  size.popular ? "border-primary bg-background" : "border-border bg-background"
+                className={`relative p-6 md:p-7 border text-center transition-shadow duration-300 hover:shadow-xl flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-[40vw] lg:w-[calc(25%-1.25rem)] snap-start mt-5 pt-10 ${
+                  size.popular ? "border-accent bg-background" : "border-border bg-background"
                 }`}
               >
                 {size.popular && (
