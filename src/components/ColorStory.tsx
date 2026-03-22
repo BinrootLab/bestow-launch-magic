@@ -97,15 +97,7 @@ const ColorStory = () => {
               {/* Video container — 9:16 aspect ratio */}
               <div className="relative aspect-[9/16] overflow-hidden bg-foreground/5 mb-5">
                 {color.video ? (
-                  <video
-                    src={color.video}
-                    poster={color.poster || undefined}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  <VideoCard video={color.video} poster={color.poster} />
                 ) : (
                   /* Placeholder until videos are added */
                   <div
