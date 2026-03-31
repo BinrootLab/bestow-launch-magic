@@ -46,7 +46,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-body text-xs tracking-[0.3em] uppercase text-brand-sky mb-6"
+          className="font-body text-xs tracking-[0.3em] uppercase text-white mb-6"
         >
           Bestow by Tramontina — Trusted Worldwide Since 1911
         </motion.p>
@@ -54,7 +54,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-brand-cotton mb-4 tracking-tight leading-[1.1] whitespace-nowrap"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-white mb-4 tracking-tight leading-[1.1] whitespace-nowrap"
         >
           Cook Better. Live Cleaner.
         </motion.h1>
@@ -62,7 +62,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-display text-lg md:text-xl text-brand-sky mb-8 font-light max-w-2xl mx-auto italic"
+          className="font-display text-lg md:text-xl text-white/90 mb-8 font-light max-w-2xl mx-auto italic"
         >
           Cast Iron, Beautifully Bestowed for Modern Kitchens
         </motion.p>
@@ -72,11 +72,11 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10"
         >
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
-          <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
-          <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">No Seasoning. No Compromise</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
+          <span className="hidden md:inline text-white/40">|</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
+          <span className="hidden md:inline text-white/40">|</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">No Seasoning. No Compromise</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -105,8 +105,8 @@ const HeroSection = () => {
             { icon: Clock, label: "10 Year Warranty" },
           ].map((badge) => (
             <div key={badge.label} className="flex items-center gap-2">
-              <badge.icon size={18} strokeWidth={1.5} className="text-brand-sky" />
-              <span className="font-body text-xs md:text-sm tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>
+              <badge.icon size={18} strokeWidth={1.5} className="text-white" />
+              <span className="font-body text-xs md:text-sm tracking-[0.15em] uppercase text-white/80">{badge.label}</span>
             </div>
           ))}
         </motion.div>
@@ -122,7 +122,7 @@ const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-px h-12 bg-brand-sky/40"
+          className="w-px h-12 bg-white/40"
         />
       </motion.div>
     </section>
