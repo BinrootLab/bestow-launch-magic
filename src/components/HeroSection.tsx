@@ -62,7 +62,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-display text-lg md:text-xl text-brand-sky mb-8 font-light max-w-2xl mx-auto italic"
+          className="font-display text-lg md:text-xl text-white/90 mb-8 font-light max-w-2xl mx-auto italic"
         >
           Cast Iron, Beautifully Bestowed for Modern Kitchens
         </motion.p>
