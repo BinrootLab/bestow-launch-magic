@@ -54,7 +54,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-brand-cotton mb-4 tracking-tight leading-[1.1] whitespace-nowrap"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-light text-white mb-4 tracking-tight leading-[1.1] whitespace-nowrap"
         >
           Cook Better. Live Cleaner.
         </motion.h1>
