@@ -188,7 +188,7 @@ const GlobalBenchmark = () => {
                 <h4 className="font-display text-base md:text-lg text-brand-sky mb-2 leading-snug">
                   {review.title}
                 </h4>
-                <p className="font-body text-sm text-brand-sky/75 leading-relaxed font-light mb-5 italic">
+                <p className="font-body text-sm text-white/85 leading-relaxed font-light mb-5 italic">
                   "{review.text}"
                 </p>
 

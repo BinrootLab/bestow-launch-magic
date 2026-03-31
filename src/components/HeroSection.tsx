@@ -122,7 +122,7 @@ const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-px h-12 bg-brand-sky/40"
+          className="w-px h-12 bg-white/40"
         />
       </motion.div>
     </section>
