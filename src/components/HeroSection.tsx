@@ -11,7 +11,7 @@ const HeroSection = () => {
           alt="Bestow Enameled Cast Iron Collection"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-brand-navy/60" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Animated steam particles */}
