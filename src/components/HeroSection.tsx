@@ -105,8 +105,8 @@ const HeroSection = () => {
             { icon: Clock, label: "10 Year Warranty" },
           ].map((badge) => (
             <div key={badge.label} className="flex items-center gap-2">
-              <badge.icon size={16} strokeWidth={1.5} className="text-brand-sky" />
-              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>
+              <badge.icon size={18} strokeWidth={1.5} className="text-brand-sky" />
+              <span className="font-body text-xs md:text-sm tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>
             </div>
           ))}
         </motion.div>
