@@ -31,7 +31,7 @@ const Index = () => {
       <FinalCTA />
       <WidgetBar />
       <Footer />
-      <StickyCTA />
+      
     </div>
   );
 };
