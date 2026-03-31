@@ -8,7 +8,7 @@ import LifestyleCooking from "@/components/LifestyleCooking";
 import ColorStory from "@/components/ColorStory";
 import ComparisonSection from "@/components/ComparisonSection";
 import BuyingGuide from "@/components/BuyingGuide";
-import ProductShowcase from "@/components/ProductShowcase";
+
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
