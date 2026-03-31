@@ -11,7 +11,7 @@ import BuyingGuide from "@/components/BuyingGuide";
 import ProductShowcase from "@/components/ProductShowcase";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import StickyCTA from "@/components/StickyCTA";
+
 import WidgetBar from "@/components/WidgetBar";
 
 const Index = () => {
