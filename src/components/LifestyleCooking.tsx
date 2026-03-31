@@ -3,7 +3,9 @@ import { useRef } from "react";
 import lifestyleTable from "@/assets/lifestyle-table.jpg";
 import galleryKitchen from "@/assets/gallery-kitchen.jpg";
 import lidCondensation from "@/assets/lid-condensation.jpg";
-
+import heroSteam from "@/assets/hero-steam.jpg";
+import enamelCloseup from "@/assets/enamel-closeup.jpg";
+import galleryPlated from "@/assets/gallery-plated.jpg";
 const LifestyleCooking = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
