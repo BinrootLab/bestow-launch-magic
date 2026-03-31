@@ -79,7 +79,9 @@ const CollectionIntro = () => {
             Find Your Bestow
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-            Timeless cast iron. Vibrant design. 100% toxin-free enamel.
+            Timeless cast iron. Vibrant design.
+            <br />
+            Healthy and nontoxic enamel.
           </h2>
           <p className="font-body text-base text-muted-foreground font-light mt-2">
             From Tramontina — Trusted Worldwide Since 1911
