@@ -3,7 +3,9 @@ import { useRef } from "react";
 import lifestyleTable from "@/assets/lifestyle-table.jpg";
 import galleryKitchen from "@/assets/gallery-kitchen.jpg";
 import lidCondensation from "@/assets/lid-condensation.jpg";
-
+import heroSteam from "@/assets/hero-steam.jpg";
+import enamelCloseup from "@/assets/enamel-closeup.jpg";
+import galleryPlated from "@/assets/gallery-plated.jpg";
 const LifestyleCooking = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -31,36 +33,28 @@ const LifestyleCooking = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="md:col-span-8 overflow-hidden relative group"
-          >
-            <img src={lifestyleTable} alt="Family dining with Bestow" className="w-full h-[400px] md:h-[550px] object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute bottom-6 left-6">
-              <p className="font-display text-2xl md:text-3xl text-brand-cotton italic">Serve directly from flame</p>
-            </div>
-          </motion.div>
-          <div className="md:col-span-4 flex flex-col gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {[
+            { src: lifestyleTable, alt: "Family dining with Bestow", caption: "Serve directly from flame" },
+            { src: galleryKitchen, alt: "Cooking on stove", caption: "Everyday elegance" },
+            { src: lidCondensation, alt: "Steam and condensation", caption: "Self-basting lid" },
+            { src: heroSteam, alt: "Cooking steam", caption: "Even heat distribution" },
+            { src: enamelCloseup, alt: "Enamel detail", caption: "Toxin-free enamel" },
+            { src: galleryPlated, alt: "Plated dish", caption: "From oven to table" },
+          ].map((img, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="overflow-hidden group flex-1"
+              key={img.alt}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.08 }}
+              className="overflow-hidden relative group"
             >
-              <img src={galleryKitchen} alt="Cooking on stove" className="w-full h-full min-h-[200px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={img.src} alt={img.alt} className="w-full h-[200px] md:h-[300px] lg:h-[350px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4">
+                <p className="font-display text-sm md:text-lg text-brand-cotton italic drop-shadow-lg">{img.caption}</p>
+              </div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="overflow-hidden group flex-1"
-            >
-              <img src={lidCondensation} alt="Steam and condensation" className="w-full h-full min-h-[200px] object-cover group-hover:scale-105 transition-transform duration-700" />
-            </motion.div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
