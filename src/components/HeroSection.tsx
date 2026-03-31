@@ -72,11 +72,11 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10"
         >
-          <span className="font-body text-xs text-brand-sky/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
+          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
           <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-xs text-brand-sky/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
+          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
           <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-xs text-brand-sky/90 tracking-wide">No Seasoning. No Compromise</span>
+          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">No Seasoning. No Compromise</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -105,8 +105,8 @@ const HeroSection = () => {
             { icon: Clock, label: "10 Year Warranty" },
           ].map((badge) => (
             <div key={badge.label} className="flex items-center gap-2">
-              <badge.icon size={16} strokeWidth={1.5} className="text-brand-sky" />
-              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>
+              <badge.icon size={18} strokeWidth={1.5} className="text-brand-sky" />
+              <span className="font-body text-xs md:text-sm tracking-[0.15em] uppercase text-brand-sky/80">{badge.label}</span>
             </div>
           ))}
         </motion.div>
