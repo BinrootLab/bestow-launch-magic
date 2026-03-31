@@ -72,11 +72,11 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10"
         >
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
-          <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
-          <span className="hidden md:inline text-brand-sky/40">|</span>
-          <span className="font-body text-sm md:text-base text-brand-sky/90 tracking-wide">No Seasoning. No Compromise</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">Backed by 115 years of Brazilian mastery</span>
+          <span className="hidden md:inline text-white/40">|</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">PFAS, PFOA & PTFE-free</span>
+          <span className="hidden md:inline text-white/40">|</span>
+          <span className="font-body text-sm md:text-base text-white/90 tracking-wide">No Seasoning. No Compromise</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
