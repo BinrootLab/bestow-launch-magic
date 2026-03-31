@@ -27,7 +27,7 @@ const Index = () => {
       <ColorStory />
       <ComparisonSection />
       <BuyingGuide />
-      <ProductShowcase />
+      
       <FinalCTA />
       <WidgetBar />
       <Footer />
