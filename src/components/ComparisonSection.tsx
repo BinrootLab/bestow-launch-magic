@@ -5,7 +5,7 @@ import { Thermometer, ShieldCheck, PenTool } from "lucide-react";
 const rows = [
   { feature: "Foundry Heritage", other: "Mass-produced", bestow: "115 Years of Brazilian Mastery" },
   { feature: "Heat Performance", other: "Uneven heat", bestow: "Even, consistent heat" },
-  { feature: "Surface Safety", other: "May contain PFAS/PTFE", bestow: "100% Non-Toxic" },
+  { feature: "Surface Safety", other: "May contain PFAS/PTFE", bestow: "Healthy and Nontoxic" },
   { feature: "Colour Durability", other: "Fades over time", bestow: "Fade-resistant finish" },
   { feature: "Lid Design", other: "Standard flat lid", bestow: "Self-basting lid design" },
   { feature: "Longevity", other: "Short lifespan", bestow: "10-Year Guarantee" },
