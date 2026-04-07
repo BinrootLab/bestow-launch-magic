@@ -131,10 +131,10 @@ const GlobalBenchmark = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-14"
         >
-          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light text-brand-cotton mb-4 leading-[1.1]">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light text-foreground mb-4 leading-[1.1]">
             Loved in Kitchens Around the World
           </h2>
-          <p className="font-body text-sm md:text-base text-brand-sky/80 font-light max-w-lg mx-auto leading-relaxed">
+          <p className="font-body text-sm md:text-base text-muted-foreground font-light max-w-lg mx-auto leading-relaxed">
             Built on 115 years of craftsmanship, designed for performance that lasts.
           </p>
 
