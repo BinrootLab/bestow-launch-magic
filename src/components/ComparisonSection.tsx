@@ -58,12 +58,13 @@ const ComparisonSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="border border-border overflow-hidden mb-20"
+          className="mb-20"
         >
-          <div className="grid grid-cols-3 bg-foreground text-primary-foreground">
-            <div className="p-4 font-body text-xs tracking-[0.15em] uppercase">Feature</div>
-            <div className="p-4 font-body text-xs tracking-[0.15em] uppercase text-center">Other Enamel Cookware</div>
-            <div className="p-4 font-body text-xs tracking-[0.15em] uppercase text-center">Tramontina Bestow</div>
+          {/* Header row */}
+          <div className="grid grid-cols-3 pb-4 border-b border-border">
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium">Feature</div>
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium text-center">Other Enamel Cookware</div>
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium text-center bg-brand-sky-tint rounded-t-sm px-4 py-2 -mb-4">Tramontina Bestow</div>
           </div>
           {rows.map((row, i) => (
             <motion.div
@@ -71,11 +72,15 @@ const ComparisonSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 + i * 0.05 }}
-              className={`grid grid-cols-3 border-t border-border ${i % 2 === 0 ? "bg-background" : "bg-card"}`}
+              className="grid grid-cols-3 py-5 border-b border-border/60"
             >
-              <div className="p-4 font-body text-sm font-medium text-foreground">{row.feature}</div>
-              <div className="p-4 font-body text-sm text-muted-foreground text-center">{row.other}</div>
-              <div className="p-4 font-body text-sm text-primary font-medium text-center">{row.bestow}</div>
+              <div className="font-body text-sm font-medium text-foreground">{row.feature}</div>
+              <div className="font-body text-sm text-muted-foreground text-center flex items-center justify-center gap-2">
+                <span className="text-muted-foreground/50">×</span> {row.other}
+              </div>
+              <div className="font-body text-sm text-primary font-medium text-center bg-brand-sky-tint px-4 flex items-center justify-center gap-2">
+                <span className="text-primary">✓</span> {row.bestow}
+              </div>
             </motion.div>
           ))}
         </motion.div>
