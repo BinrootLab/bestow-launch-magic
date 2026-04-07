@@ -93,7 +93,7 @@ const ComparisonSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h3 className="font-display text-3xl md:text-4xl font-light text-foreground">
             What Sets Bestow Apart
