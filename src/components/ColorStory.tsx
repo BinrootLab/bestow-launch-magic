@@ -64,7 +64,7 @@ const ColorStory = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="palette" className="py-24 md:py-40 bg-card" ref={ref}>
+    <section id="palette" className="py-24 md:py-40 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div

@@ -122,7 +122,7 @@ const GlobalBenchmark = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-foreground text-primary-foreground overflow-hidden" ref={ref}>
+    <section className="py-20 md:py-28 bg-brand-sky-tint overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -131,10 +131,10 @@ const GlobalBenchmark = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-14"
         >
-          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light text-brand-cotton mb-4 leading-[1.1]">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-light text-foreground mb-4 leading-[1.1]">
             Loved in Kitchens Around the World
           </h2>
-          <p className="font-body text-sm md:text-base text-brand-sky/80 font-light max-w-lg mx-auto leading-relaxed">
+          <p className="font-body text-sm md:text-base text-muted-foreground font-light max-w-lg mx-auto leading-relaxed">
             Built on 115 years of craftsmanship, designed for performance that lasts.
           </p>
 
@@ -145,8 +145,8 @@ const GlobalBenchmark = () => {
                 <Star key={i} size={15} className="fill-brand-gold text-brand-gold" />
               ))}
             </div>
-            <span className="font-display text-xl text-brand-cotton">4.9</span>
-            <span className="font-body text-[11px] text-brand-sky/60 tracking-wide">
+            <span className="font-display text-xl text-foreground">4.9</span>
+            <span className="font-body text-[11px] text-muted-foreground tracking-wide">
               from 2,847 reviews
             </span>
           </div>
@@ -174,8 +174,8 @@ const GlobalBenchmark = () => {
               key={review.name}
               className="flex-shrink-0 w-[85vw] sm:w-[420px] md:w-[380px] lg:w-[400px] snap-start select-none"
             >
-              <div className="bg-brand-sky/[0.04] border border-brand-sky/10 p-6 md:p-7 h-full relative group hover:bg-brand-sky/[0.08] transition-colors duration-300">
-                <Quote size={18} className="text-brand-sky/15 absolute top-5 right-5" />
+              <div className="bg-white border border-border p-6 md:p-7 h-full relative group hover:shadow-md transition-all duration-300">
+                <Quote size={18} className="text-muted-foreground/20 absolute top-5 right-5" />
                 
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
@@ -185,18 +185,18 @@ const GlobalBenchmark = () => {
                 </div>
 
                 {/* Title & Text */}
-                <h4 className="font-display text-base md:text-lg text-brand-sky mb-2 leading-snug">
+                <h4 className="font-display text-base md:text-lg text-primary mb-2 leading-snug">
                   {review.title}
                 </h4>
-                <p className="font-body text-sm text-white/85 leading-relaxed font-light mb-5 italic">
+                <p className="font-body text-sm text-foreground/80 leading-relaxed font-light mb-5 italic">
                   "{review.text}"
                 </p>
 
                 {/* Author */}
-                <div className="border-t border-brand-sky/10 pt-4 flex items-center justify-between">
+                <div className="border-t border-border pt-4 flex items-center justify-between">
                   <div>
-                    <p className="font-body text-sm font-medium text-brand-cotton">{review.name}</p>
-                    <p className="font-body text-[11px] text-brand-sky/50">{review.location}</p>
+                    <p className="font-body text-sm font-medium text-foreground">{review.name}</p>
+                    <p className="font-body text-[11px] text-muted-foreground">{review.location}</p>
                   </div>
                   {review.verified && (
                     <span className="font-body text-[9px] tracking-[0.15em] uppercase text-brand-olive bg-brand-olive/10 px-2 py-0.5">
@@ -204,7 +204,7 @@ const GlobalBenchmark = () => {
                     </span>
                   )}
                 </div>
-                <p className="font-body text-[10px] text-brand-sky/40 mt-2">{review.product}</p>
+                <p className="font-body text-[10px] text-muted-foreground mt-2">{review.product}</p>
               </div>
             </div>
           ))}
@@ -220,8 +220,8 @@ const GlobalBenchmark = () => {
                 onClick={() => scrollToIndex(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   i === activeIndex
-                    ? "w-6 bg-brand-burgundy"
-                    : "w-1.5 bg-brand-sky/30 hover:bg-brand-sky/50"
+                    ? "w-6 bg-primary"
+                    : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                 }`}
               />
             ))}
@@ -232,14 +232,14 @@ const GlobalBenchmark = () => {
             <button
               onClick={handlePrev}
               disabled={activeIndex === 0}
-              className="w-9 h-9 border border-brand-sky/20 flex items-center justify-center text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
+              className="w-9 h-9 border border-border flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={handleNext}
               disabled={activeIndex === reviews.length - 1}
-              className="w-9 h-9 border border-brand-sky/20 flex items-center justify-center text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
+              className="w-9 h-9 border border-border flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
             >
               <ChevronRight size={16} />
             </button>

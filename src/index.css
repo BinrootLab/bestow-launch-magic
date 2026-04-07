@@ -49,6 +49,8 @@
     --brand-terracotta: 16 68% 45%;
     --brand-burgundy: 1 65% 38%;
     --brand-olive: 73 59% 34%;
+    --brand-sky-tint: 218 60% 97%; /* #F2F6FC */
+    --brand-sky-light: 218 45% 93%; /* #EDF2FC */
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
