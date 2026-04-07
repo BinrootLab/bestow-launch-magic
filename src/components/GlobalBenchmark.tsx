@@ -204,7 +204,7 @@ const GlobalBenchmark = () => {
                     </span>
                   )}
                 </div>
-                <p className="font-body text-[10px] text-brand-sky/40 mt-2">{review.product}</p>
+                <p className="font-body text-[10px] text-muted-foreground mt-2">{review.product}</p>
               </div>
             </div>
           ))}
