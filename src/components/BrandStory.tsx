@@ -24,16 +24,16 @@ const BrandStory = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase text-brand-olive mb-6">
             The Bestow Story
           </p>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-brand-cotton mb-4">
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground mb-4">
             115 Years of Brazilian Mastery.
           </h2>
-          <p className="font-display text-lg md:text-xl text-brand-sky font-light italic mb-8">
+          <p className="font-display text-lg md:text-xl text-muted-foreground font-light italic mb-8">
             From a 1911 blacksmith workshop to a global benchmark in cookware.
           </p>
-          <p className="font-body text-base text-brand-sky font-light max-w-2xl mx-auto leading-relaxed mb-6">
+          <p className="font-body text-base text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed mb-6">
             What began as a single blacksmith's vision in southern Brazil has evolved into a global standard in cookware. For over 115 years, Tramontina has remained family-led, focused on craftsmanship, performance, and timeless design.
           </p>
-          <p className="font-body text-base text-brand-sky font-light max-w-2xl mx-auto leading-relaxed mb-16">
+          <p className="font-body text-base text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed mb-16">
             Today, with 9 state-of-the-art factories, every Bestow piece still reflects that original philosophy: make it right, make it beautiful, and make it last.
           </p>
 
@@ -46,9 +46,9 @@ const BrandStory = () => {
                 transition={{ delay: 0.3 + i * 0.1 }}
                 className="flex flex-col items-center"
               >
-                <stat.icon size={24} strokeWidth={1.5} className="text-brand-sky mb-3" />
-                <p className="font-display text-2xl md:text-3xl text-brand-cotton">{stat.value}</p>
-                <p className="font-body text-[10px] tracking-[0.15em] uppercase text-brand-sky mt-2 max-w-[180px]">{stat.label}</p>
+                <stat.icon size={24} strokeWidth={1.5} className="text-primary mb-3" />
+                <p className="font-display text-2xl md:text-3xl text-foreground">{stat.value}</p>
+                <p className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mt-2 max-w-[180px]">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -60,11 +60,11 @@ const BrandStory = () => {
           >
             <a
               href="#shop"
-              className="inline-block px-10 py-4 bg-brand-cotton text-primary font-body text-xs tracking-[0.2em] uppercase hover:bg-brand-cotton/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-block px-10 py-4 bg-primary text-primary-foreground font-body text-xs tracking-[0.2em] uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Explore Bestow
             </a>
-            <p className="font-body text-xs text-brand-sky/60 mt-4 italic">
+            <p className="font-body text-xs text-muted-foreground mt-4 italic">
               115 years of craftsmanship, brought to your kitchen.
             </p>
           </motion.div>
