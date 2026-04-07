@@ -145,8 +145,8 @@ const GlobalBenchmark = () => {
                 <Star key={i} size={15} className="fill-brand-gold text-brand-gold" />
               ))}
             </div>
-            <span className="font-display text-xl text-brand-cotton">4.9</span>
-            <span className="font-body text-[11px] text-brand-sky/60 tracking-wide">
+            <span className="font-display text-xl text-foreground">4.9</span>
+            <span className="font-body text-[11px] text-muted-foreground tracking-wide">
               from 2,847 reviews
             </span>
           </div>
