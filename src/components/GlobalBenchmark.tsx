@@ -174,8 +174,8 @@ const GlobalBenchmark = () => {
               key={review.name}
               className="flex-shrink-0 w-[85vw] sm:w-[420px] md:w-[380px] lg:w-[400px] snap-start select-none"
             >
-              <div className="bg-brand-sky/[0.04] border border-brand-sky/10 p-6 md:p-7 h-full relative group hover:bg-brand-sky/[0.08] transition-colors duration-300">
-                <Quote size={18} className="text-brand-sky/15 absolute top-5 right-5" />
+              <div className="bg-white border border-border p-6 md:p-7 h-full relative group hover:shadow-md transition-all duration-300">
+                <Quote size={18} className="text-muted-foreground/20 absolute top-5 right-5" />
                 
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
