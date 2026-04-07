@@ -232,7 +232,7 @@ const GlobalBenchmark = () => {
             <button
               onClick={handlePrev}
               disabled={activeIndex === 0}
-              className="w-9 h-9 border border-brand-sky/20 flex items-center justify-center text-brand-cotton hover:bg-brand-sky/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
+              className="w-9 h-9 border border-border flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-25 disabled:cursor-not-allowed transition-colors duration-200 active:scale-95"
             >
               <ChevronLeft size={16} />
             </button>
