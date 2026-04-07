@@ -61,7 +61,7 @@ const ComparisonSection = () => {
           className="mb-20 relative"
         >
           {/* Blue tint column background */}
-          <div className="absolute top-0 bottom-0 right-0 w-[33.333%] bg-brand-sky-tint rounded-sm" />
+          <div className="absolute -top-6 bottom-0 right-0 w-[33.333%] bg-brand-sky-tint rounded-sm" />
 
           {/* Header row */}
           <div className="relative grid grid-cols-3 pb-4">
