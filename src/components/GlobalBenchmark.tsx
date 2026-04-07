@@ -193,10 +193,10 @@ const GlobalBenchmark = () => {
                 </p>
 
                 {/* Author */}
-                <div className="border-t border-brand-sky/10 pt-4 flex items-center justify-between">
+                <div className="border-t border-border pt-4 flex items-center justify-between">
                   <div>
-                    <p className="font-body text-sm font-medium text-brand-cotton">{review.name}</p>
-                    <p className="font-body text-[11px] text-brand-sky/50">{review.location}</p>
+                    <p className="font-body text-sm font-medium text-foreground">{review.name}</p>
+                    <p className="font-body text-[11px] text-muted-foreground">{review.location}</p>
                   </div>
                   {review.verified && (
                     <span className="font-body text-[9px] tracking-[0.15em] uppercase text-brand-olive bg-brand-olive/10 px-2 py-0.5">
