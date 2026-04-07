@@ -7,7 +7,7 @@ const WhyBestow = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="story" className="py-24 md:py-40 px-6 lg:px-12" ref={ref}>
+    <section id="story" className="py-24 md:py-40 px-6 lg:px-12 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}

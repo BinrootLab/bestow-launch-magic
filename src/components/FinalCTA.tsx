@@ -7,7 +7,7 @@ const FinalCTA = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-32 md:py-48 bg-primary text-primary-foreground" ref={ref}>
+    <section className="py-32 md:py-48" style={{ background: 'linear-gradient(180deg, hsl(60 45% 95%) 0%, hsl(218 45% 93%) 100%)' }} ref={ref}>
       <div className="max-w-3xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -122,7 +122,7 @@ const GlobalBenchmark = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-foreground text-primary-foreground overflow-hidden" ref={ref}>
+    <section className="py-20 md:py-28 bg-brand-sky-tint overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div

@@ -2,7 +2,7 @@ import { Facebook, Youtube, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-brand-navy/20 bg-brand-navy">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
         {/* Row 1: 4 columns */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">

@@ -11,7 +11,7 @@ const LifestyleCooking = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-40" ref={ref}>
+    <section className="py-24 md:py-40 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
