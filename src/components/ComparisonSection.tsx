@@ -64,10 +64,10 @@ const ComparisonSection = () => {
           <div className="absolute -top-6 bottom-0 right-0 w-[33.333%] bg-brand-sky-tint rounded-sm" />
 
           {/* Header row */}
-          <div className="relative grid grid-cols-3 pb-4">
-            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium">Feature</div>
-            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium text-center">Other Enamel Cookware</div>
-            <div className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground font-medium text-center px-4">Tramontina Bestow</div>
+          <div className="relative grid grid-cols-3 pb-4 border-b border-border/40">
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-foreground font-semibold">Feature</div>
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-foreground font-semibold">Other Enamel Cookware</div>
+            <div className="font-body text-xs tracking-[0.15em] uppercase text-foreground font-semibold px-6">Tramontina Bestow</div>
           </div>
           {rows.map((row, i) => (
             <motion.div
@@ -75,13 +75,13 @@ const ComparisonSection = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 + i * 0.05 }}
-              className="relative grid grid-cols-3 py-5"
+              className="relative grid grid-cols-3 py-5 border-b border-border/30"
             >
               <div className="font-body text-sm font-medium text-foreground">{row.feature}</div>
-              <div className="font-body text-sm text-muted-foreground text-center flex items-center justify-center gap-2">
-                <span className="text-muted-foreground/50">×</span> {row.other}
+              <div className="font-body text-sm text-muted-foreground flex items-center gap-2">
+                <span className="text-brand-burgundy font-bold">×</span> {row.other}
               </div>
-              <div className="font-body text-sm text-primary font-medium text-center px-4 flex items-center justify-center gap-2">
+              <div className="font-body text-sm text-foreground font-semibold px-6 flex items-center gap-2">
                 <span className="text-primary">✓</span> {row.bestow}
               </div>
             </motion.div>
