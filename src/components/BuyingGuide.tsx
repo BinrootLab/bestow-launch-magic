@@ -35,7 +35,7 @@ const BuyingGuide = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="guide" className="py-24 md:py-40 bg-white" ref={ref}>
+    <section id="guide" className="py-16 md:py-24 bg-white" ref={ref}>
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
