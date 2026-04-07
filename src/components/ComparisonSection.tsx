@@ -107,16 +107,10 @@ const ComparisonSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 + i * 0.12 }}
-              className="text-center p-6 border border-border bg-card hover:shadow-lg transition-shadow duration-300"
+              className="text-center p-6"
             >
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-14 h-14 mx-auto mb-4 rounded-full border border-border flex items-center justify-center"
-              >
-                <item.icon size={22} strokeWidth={1.5} className="text-primary" />
-              </motion.div>
-              <span className="font-display text-sm text-muted-foreground">{item.number}.</span>
-              <h4 className="font-display text-xl text-foreground mb-2">{item.title}</h4>
+              <p className="font-display text-2xl text-primary mb-1 italic">{item.number}.</p>
+              <h4 className="font-display text-xl text-foreground mb-2 italic">{item.title}</h4>
               <p className="font-body text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
