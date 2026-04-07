@@ -38,15 +38,15 @@ const colors = [
     hex: "#2D5A3D",
     subtitle: "Fresh, Grounded, Enduring",
     inspiration: "Inspired by Brazil's lush landscapes, a natural, calming presence in any kitchen.",
-    video: "", // Add vertical video URL here
-    poster: "", // Optional poster/thumbnail
+    video: "/videos/cactus-green.mp4",
+    poster: "",
   },
   {
     name: "Gradated Red",
     hex: "#7A1B1B",
     subtitle: "Rich, Bold, Expressive",
     inspiration: "Inspired by iron-rich earth, a colour that brings warmth and intensity to the table.",
-    video: "",
+    video: "/videos/gradated-red.mp4",
     poster: "",
   },
   {
@@ -54,7 +54,7 @@ const colors = [
     hex: "#1B2D5A",
     subtitle: "Calm, Refined, Timeless",
     inspiration: "Inspired by the Atlantic, understated, elegant, and effortlessly versatile.",
-    video: "",
+    video: "/videos/medium-blue.mp4",
     poster: "",
   },
 ];
